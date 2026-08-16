@@ -8,6 +8,7 @@ Unified entry point for the Solex MES Portal, SAMA AI Maintenance Assistant and 
 - Use the **☰ menu button** to open or close the sidebar on desktop and mobile.
 - The shared theme uses Solex orange, charcoal and grey across login, overview and application controls.
 - Applications open in a full-viewport embedded workspace. Deep links such as `index.html?app=learning` return to the requested application after authentication.
+- The full-screen application toolbar includes its own **☰ portal menu**, so navigation remains available while MES, SAMA or e‑Vidhyalaya is open.
 - e‑Vidhyalaya reads the same `solexPortalSession` used by MES and SAMA; it does not maintain a separate user list.
 
 ## Publish on GitHub Pages
@@ -43,6 +44,8 @@ Change users, permissions and application URLs inside `assets/config.js`.
 | Process Engineering | Yes | Yes | Yes | Yes, except own request |
 | Management | Yes | Yes | No | No |
 | Operations Excellence Admin | Yes | Yes | Yes | Yes, except own request |
+
+The active SAMA interface contains only **AI Chat** and **Machine Status**. Analytics and other legacy SAMA routes are blocked by the shared session guard.
 
 ## Security warning
 
