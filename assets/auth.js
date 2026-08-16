@@ -37,6 +37,16 @@ function portalDestination() {
   return app ? `portal.html?app=${encodeURIComponent(app)}` : "portal.html";
 }
 
+function requestPortalFullscreen() {
+  if (document.fullscreenElement) return;
+  const request = document.documentElement.requestFullscreen || document.documentElement.webkitRequestFullscreen;
+  if (!request) return;
+  try {
+    const result = request.call(document.documentElement);
+    if (result && typeof result.catch === "function") result.catch(() => {});
+  } catch {}
+}
+
 const loginForm = document.getElementById("loginForm");
 if (loginForm) {
   if (getSession()) location.replace(portalDestination());
@@ -54,7 +64,9 @@ if (loginForm) {
     }
     message.textContent = "Access verified. Opening your workspace…";
     message.className = "form-message success";
+    document.body.classList.add("auth-success");
     createSession(user);
+    requestPortalFullscreen();
     setTimeout(() => location.replace(portalDestination()), 450);
   });
   document.getElementById("togglePassword").addEventListener("click", event => {

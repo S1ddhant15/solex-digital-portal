@@ -3,9 +3,9 @@ const PORTAL_CONFIG = {
   sessionHours: 8,
   apps: {
     mes: {
-      name: "MES Portal",
-      short: "Manufacturing Intelligence",
-      description: "Production, quality, maintenance and management dashboards in one operational view.",
+      name: "Analytics",
+      short: "Manufacturing Analytics",
+      description: "Department-controlled production, quality, maintenance and management intelligence in one operational view.",
       icon: "▦",
       color: "blue",
       url: "https://s1ddhant15.github.io/solex-mes-portal/dashboard.html"

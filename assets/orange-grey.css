@@ -189,3 +189,263 @@ body.sidebar-collapsed .main-content {
     background: linear-gradient(135deg, #292c30, #50545a);
   }
 }
+
+/* Premium full-viewport portal experience */
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+}
+
+.login-page {
+  min-height: 100dvh;
+  overflow: hidden;
+}
+
+.login-shell {
+  width: 100vw;
+  height: 100dvh;
+  min-height: 100dvh;
+  overflow: hidden;
+  background: #f4f4f3;
+}
+
+.login-brand {
+  isolation: isolate;
+  background-image:
+    linear-gradient(110deg, #202327f2 0%, #30343ae8 54%, #373b40c9 100%),
+    url("solar-module-pattern.svg");
+  background-position: center, center;
+  background-size: cover, cover;
+}
+
+.login-brand::before {
+  z-index: -1;
+  width: 520px;
+  height: 520px;
+  right: -170px;
+  top: -150px;
+  border-width: 92px;
+  border-color: #ffffff0b;
+}
+
+.login-brand::after {
+  z-index: -1;
+  right: -110px;
+  bottom: -205px;
+  width: 520px;
+  height: 350px;
+  opacity: .96;
+  box-shadow: -30px -20px 80px #f47b2026;
+}
+
+.login-brand > img {
+  width: 182px;
+  padding: 11px 15px;
+  box-shadow: 0 12px 30px #0004;
+}
+
+.brand-copy {
+  margin-top: clamp(90px, 16vh, 170px);
+  max-width: 720px;
+}
+
+.brand-copy h1 {
+  max-width: 690px;
+  margin: 15px 0 16px;
+  font-size: clamp(42px, 4.2vw, 68px);
+  letter-spacing: -2px;
+  text-shadow: 0 7px 24px #0004;
+}
+
+.brand-copy p {
+  max-width: 660px;
+  color: #eef1f3;
+  font-size: 15px;
+}
+
+.brand-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(130px, 1fr));
+  gap: 10px;
+  max-width: 610px;
+  margin-top: 30px;
+}
+
+.brand-stats div {
+  padding: 14px 16px;
+  border: 1px solid #ffffff20;
+  border-radius: 9px;
+  background: #11171b66;
+  backdrop-filter: blur(8px);
+}
+
+.brand-stats strong,
+.brand-stats small {
+  display: block;
+}
+
+.brand-stats strong {
+  color: var(--orange);
+  font-size: 18px;
+}
+
+.brand-stats small {
+  margin-top: 3px;
+  color: #d3d8dc;
+  font-size: 9px;
+  letter-spacing: .5px;
+}
+
+.brand-pills b {
+  border-color: #ffffff30;
+  background: #11171b66;
+  backdrop-filter: blur(8px);
+}
+
+.brand-pills b:first-child {
+  border-color: var(--orange);
+  color: #fff;
+  background: #f47b2029;
+}
+
+.login-panel {
+  position: relative;
+  border-top: 7px solid var(--orange);
+  background:
+    radial-gradient(circle at 95% 5%, #f47b2014, transparent 28%),
+    linear-gradient(145deg, #fff, #f1f2f2);
+}
+
+.login-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(#2d313408 1px, transparent 1px), linear-gradient(90deg, #2d313408 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: linear-gradient(to bottom, #0008, transparent 72%);
+}
+
+.login-panel > * {
+  position: relative;
+  z-index: 1;
+}
+
+.login-panel h2 {
+  letter-spacing: -.8px;
+}
+
+.login-panel input {
+  border-color: #cfd2d5;
+  background: #fff;
+  transition: border-color .18s, box-shadow .18s, transform .18s;
+}
+
+.login-panel input:focus {
+  transform: translateY(-1px);
+}
+
+.login-panel input:-webkit-autofill,
+.login-panel input:-webkit-autofill:hover,
+.login-panel input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #25282b;
+  -webkit-box-shadow: 0 0 0 1000px #fff inset;
+}
+
+.primary-btn {
+  background: linear-gradient(100deg, #e9660d, #ff941f);
+  box-shadow: 0 12px 26px #f47b2038;
+  transition: transform .18s, box-shadow .18s;
+}
+
+.primary-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 30px #f47b204a;
+}
+
+.demo-box {
+  border: 1px solid #f47b2024;
+  border-left: 4px solid var(--orange);
+  border-radius: 6px;
+  background: #fff8ef;
+}
+
+.login-features {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 14px;
+}
+
+.login-features span {
+  padding: 6px 9px;
+  border: 1px solid #d9dbdd;
+  border-radius: 20px;
+  color: #777c81;
+  background: #ffffffa6;
+  font-size: 9px;
+}
+
+body.auth-success .login-shell {
+  filter: brightness(1.03);
+  transform: scale(1.004);
+  transition: .35s ease;
+}
+
+.welcome-banner {
+  background-image:
+    linear-gradient(105deg, #292c30f5 0%, #4b5055e8 57%, #ececed 57.2%),
+    url("solar-module-pattern.svg");
+  background-size: cover, cover;
+  background-position: center, 55% center;
+  box-shadow: 0 9px 26px #2b30351d;
+}
+
+.kpi-grid article,
+.app-card,
+.info-panel,
+.page-card {
+  border: 1px solid #dfe1e3;
+  border-top: 3px solid var(--orange);
+  box-shadow: 0 8px 22px #252b3114;
+}
+
+.app-card:hover {
+  border-color: #f47b2066;
+  transform: translateY(-5px);
+  box-shadow: 0 15px 32px #252b3124;
+}
+
+.app-open .frame-toolbar {
+  position: fixed;
+  top: 10px;
+  right: 12px;
+  left: 12px;
+  z-index: 180;
+  width: auto;
+  height: 48px;
+  border: 1px solid #ffffff1c;
+  border-bottom: 2px solid var(--orange);
+  border-radius: 10px;
+  background: #202326e8;
+  box-shadow: 0 10px 28px #0007;
+  backdrop-filter: blur(12px);
+}
+
+.app-open .app-frame-view iframe {
+  width: 100vw;
+  height: 100dvh;
+  border-radius: 0;
+}
+
+@media (max-width: 760px) {
+  .login-page { overflow: auto; }
+  .login-shell { height: auto; min-height: 100dvh; overflow: visible; }
+  .login-panel { min-height: 100dvh; }
+  .brand-stats { grid-template-columns: 1fr; }
+  .app-open .frame-toolbar { top: 6px; right: 6px; left: 6px; }
+  .app-open .frame-toolbar div { display: none; }
+}
