@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-label="Solar modules in a premium industrial background">
+  <defs>
+    <linearGradient id="frame" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#aeb5ba"/>
+      <stop offset=".22" stop-color="#32383d"/>
+      <stop offset=".78" stop-color="#747c82"/>
+      <stop offset="1" stop-color="#15191c"/>
+    </linearGradient>
+    <linearGradient id="cell" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#314c59"/>
+      <stop offset=".48" stop-color="#182c35"/>
+      <stop offset="1" stop-color="#435f69"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#ffffff" stop-opacity=".25"/>
+      <stop offset=".28" stop-color="#ffffff" stop-opacity=".02"/>
+      <stop offset=".68" stop-color="#f47b20" stop-opacity=".04"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity=".13"/>
+    </linearGradient>
+    <linearGradient id="floor" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#596066" stop-opacity="0"/>
+      <stop offset="1" stop-color="#14171a" stop-opacity=".78"/>
+    </linearGradient>
+    <pattern id="cells" width="92" height="92" patternUnits="userSpaceOnUse">
+      <rect width="88" height="88" rx="4" fill="url(#cell)" stroke="#cbd6da" stroke-opacity=".4" stroke-width="1.5"/>
+      <path d="M44 4v80M4 44h80" stroke="#dbe4e7" stroke-opacity=".14"/>
+      <path d="M12 4h64M12 84h64" stroke="#f47b20" stroke-opacity=".14"/>
+      <circle cx="44" cy="44" r="3" fill="#f47b20" fill-opacity=".4"/>
+    </pattern>
+    <filter id="shadow" x="-35%" y="-35%" width="170%" height="190%">
+      <feDropShadow dx="0" dy="34" stdDeviation="28" flood-color="#050607" flood-opacity=".72"/>
+    </filter>
+    <filter id="glow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="20"/>
+    </filter>
+  </defs>
+
+  <rect width="1920" height="1080" fill="#34393e"/>
+  <path d="M0 0h1920v1080H0z" fill="url(#floor)"/>
+
+  <g transform="translate(865 -105) rotate(-10 520 350)" filter="url(#shadow)">
+    <rect width="1080" height="730" rx="28" fill="url(#frame)"/>
+    <rect x="18" y="18" width="1044" height="694" rx="16" fill="#0c1114" stroke="#f47b20" stroke-opacity=".78" stroke-width="3"/>
+    <rect x="38" y="38" width="1004" height="654" rx="8" fill="url(#cells)"/>
+    <rect x="38" y="38" width="1004" height="654" rx="8" fill="url(#glass)"/>
+    <path d="M540 38v654M38 365h1004" stroke="#f47b20" stroke-opacity=".55" stroke-width="4"/>
+    <path d="M120 38L620 692H420L38 192V38z" fill="#fff" fill-opacity=".07"/>
+  </g>
+
+  <g transform="translate(-285 615) rotate(8 500 300)" opacity=".92" filter="url(#shadow)">
+    <rect width="1040" height="615" rx="26" fill="url(#frame)"/>
+    <rect x="18" y="18" width="1004" height="579" rx="14" fill="#0d1215" stroke="#f47b20" stroke-opacity=".62" stroke-width="3"/>
+    <rect x="38" y="38" width="964" height="539" rx="7" fill="url(#cells)"/>
+    <rect x="38" y="38" width="964" height="539" rx="7" fill="url(#glass)"/>
+  </g>
+
+  <circle cx="1600" cy="240" r="210" fill="#f47b20" fill-opacity=".2" filter="url(#glow)"/>
+  <path d="M1525 930h395v150h-490z" fill="#f47b20" fill-opacity=".88"/>
+  <path d="M0 970l510-110 290 220H0z" fill="#f47b20" fill-opacity=".16"/>
+</svg>

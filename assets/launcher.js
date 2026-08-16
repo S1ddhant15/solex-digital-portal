@@ -7,6 +7,10 @@ function openPortalWindow() {
   const height = screen.availHeight || window.innerHeight;
   const features = [
     "popup=yes",
+    "toolbar=no",
+    "location=no",
+    "menubar=no",
+    "status=no",
     "resizable=yes",
     "scrollbars=yes",
     `width=${width}`,
@@ -16,7 +20,7 @@ function openPortalWindow() {
   ].join(",");
   const portalWindow = window.open("index.html?standalone=1", "solexDigitalOperationsPortal", features);
   if (!portalWindow) {
-    launcherMessage.textContent = "The popup was blocked. Allow popups for this site or use the link below.";
+    launcherMessage.textContent = "Popup blocked. Allow popups for this site and try again.";
     launcherFallback.style.display = "inline";
     return;
   }
@@ -26,12 +30,12 @@ function openPortalWindow() {
     portalWindow.focus();
   } catch {}
   launcherFallback.style.display = "none";
-  launcherMessage.textContent = "Portal opened. You can keep this launcher tab open or close it.";
+  launcherMessage.textContent = "";
 }
 
 openPortalButton.addEventListener("click", openPortalWindow);
 
 window.addEventListener("message", event => {
   if (event.origin !== location.origin || event.data?.type !== "solex-portal-closed") return;
-  launcherMessage.textContent = "Portal closed successfully. Select Open Digital Operations Portal to start again.";
+  launcherMessage.textContent = "";
 });

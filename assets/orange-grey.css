@@ -515,7 +515,7 @@ body.auth-success .login-shell {
 .launcher-shell {
   position: relative;
   display: grid;
-  place-items: center;
+  place-items: center start;
   min-height: 100dvh;
   padding: 28px;
   isolation: isolate;
@@ -628,4 +628,286 @@ body.auth-success .login-shell {
   margin-top: 20px;
   color: #949ba1;
   font-size: 10px;
+}
+
+/* V9 premium full-screen launcher */
+
+.launcher-page {
+  width: 100%;
+  min-height: 100dvh;
+  overflow: hidden;
+  color: #fff;
+  background-color: #181b1e;
+  background-image:
+    radial-gradient(circle at 74% 38%, #f47b201c 0, transparent 28%),
+    linear-gradient(112deg, #171a1dd9 0%, #24282cc4 48%, #34383ca1 100%),
+    url("launcher-module-background.svg");
+  background-position: center, center, center;
+  background-size: cover, cover, cover;
+}
+
+.launcher-page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, #fff0 0 44%, #ffffff0a 50%, #fff0 56%) -90vw 0 / 70vw 100% no-repeat,
+    radial-gradient(ellipse at center, transparent 15%, #080a0c75 100%);
+  animation: module-light-sweep 8s ease-in-out infinite;
+}
+
+.launcher-shell {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100vw;
+  min-height: 100dvh;
+  padding: clamp(24px, 4vw, 56px) clamp(24px, 8vw, 154px);
+  isolation: isolate;
+}
+
+.launcher-shell::before {
+  left: -10vw;
+  right: auto;
+  top: auto;
+  bottom: -22vh;
+  z-index: -1;
+  width: 62vw;
+  height: 38vh;
+  transform: skewX(-30deg);
+  border: 0;
+  border-top: 2px solid #f47b2069;
+  border-radius: 0;
+  background: linear-gradient(120deg, #f47b2000, #f47b2024 62%, #f47b2010);
+  filter: drop-shadow(0 -28px 65px #f47b201a);
+}
+
+.launcher-shell::after {
+  display: none;
+}
+
+.launcher-card {
+  position: relative;
+  width: min(720px, 88vw);
+  padding: clamp(58px, 8vw, 94px) clamp(30px, 7vw, 84px) clamp(52px, 7vw, 76px);
+  overflow: hidden;
+  border: 1px solid #ffffff24;
+  border-top: 1px solid #ffffff30;
+  border-radius: 24px;
+  background:
+    linear-gradient(145deg, #292e33bf 0%, #171a1cbd 58%, #111315d4 100%);
+  box-shadow:
+    0 36px 100px #050607b3,
+    0 0 0 1px #0007 inset,
+    0 1px 0 #ffffff1e inset;
+  text-align: center;
+  backdrop-filter: blur(18px) saturate(120%);
+  animation: launcher-arrive .72s cubic-bezier(.2,.8,.2,1) both;
+}
+
+.launcher-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 10%;
+  left: 10%;
+  height: 4px;
+  border-radius: 0 0 8px 8px;
+  background: linear-gradient(90deg, transparent, #f47b20 18%, #ffae52 50%, #f47b20 82%, transparent);
+  box-shadow: 0 0 30px #f47b2090;
+}
+
+.launcher-card::after {
+  content: "";
+  position: absolute;
+  top: -150px;
+  right: -160px;
+  width: 390px;
+  height: 390px;
+  border: 62px solid #ffffff08;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.launcher-eyebrow {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  color: #ff8a31;
+  font-size: clamp(10px, 1vw, 13px);
+  font-weight: 900;
+  letter-spacing: 4.5px;
+}
+
+.launcher-eyebrow::before,
+.launcher-eyebrow::after {
+  content: "";
+  width: clamp(26px, 4vw, 48px);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #f47b20);
+}
+
+.launcher-eyebrow::after {
+  transform: rotate(180deg);
+}
+
+.launcher-card h1 {
+  position: relative;
+  z-index: 1;
+  margin: 20px auto 0;
+  color: #fff;
+  font-size: clamp(44px, 6vw, 78px);
+  line-height: .98;
+  letter-spacing: -3px;
+  text-wrap: balance;
+  text-shadow: 0 10px 32px #0008;
+}
+
+.launcher-actions {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 13px;
+  width: min(490px, 100%);
+  max-width: none;
+  margin: clamp(38px, 5vw, 52px) auto 0;
+}
+
+.launcher-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 64px;
+  overflow: hidden;
+  border: 1px solid #ffb0626b;
+  border-radius: 10px;
+  padding: 0 13px 0 25px;
+  color: #fff;
+  background: linear-gradient(105deg, #df5b08 0%, #f47b20 52%, #ff961f 100%);
+  box-shadow: 0 18px 38px #f47b203d, 0 1px 0 #ffffff35 inset;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+}
+
+.launcher-button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-120%);
+  background: linear-gradient(105deg, transparent 28%, #ffffff38 48%, transparent 68%);
+  transition: transform .65s ease;
+}
+
+.launcher-button span,
+.launcher-button b {
+  position: relative;
+  z-index: 1;
+}
+
+.launcher-button b {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid #ffffff35;
+  border-radius: 8px;
+  background: #20232633;
+  font-size: 22px;
+  transition: transform .2s ease, background .2s ease;
+}
+
+.launcher-button:hover {
+  transform: translateY(-3px) scale(1.008);
+  filter: saturate(1.1) brightness(1.04);
+  box-shadow: 0 24px 48px #f47b2052, 0 1px 0 #ffffff45 inset;
+}
+
+.launcher-button:hover::before {
+  transform: translateX(120%);
+}
+
+.launcher-button:hover b {
+  transform: translateX(3px);
+  background: #20232655;
+}
+
+.launcher-button:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 4px;
+}
+
+.launcher-fallback {
+  display: none;
+  color: #ffc078;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.launcher-card > .launcher-message,
+.launcher-message {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  min-height: 0;
+  margin: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@keyframes launcher-arrive {
+  from { opacity: 0; transform: translateY(22px) scale(.975); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes module-light-sweep {
+  0%, 30% { background-position: -90vw 0, center; }
+  65%, 100% { background-position: 145vw 0, center; }
+}
+
+@media (max-width: 650px) {
+  .launcher-shell {
+    place-items: center;
+    padding: 18px;
+  }
+
+  .launcher-card {
+    padding: 54px 22px 42px;
+    border-radius: 18px;
+  }
+
+  .launcher-card h1 {
+    font-size: clamp(42px, 14vw, 62px);
+    letter-spacing: -2.2px;
+  }
+
+  .launcher-eyebrow {
+    letter-spacing: 2.8px;
+  }
+
+  .launcher-button {
+    min-height: 60px;
+    padding-left: 18px;
+    font-size: 13px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .launcher-page::before,
+  .launcher-card {
+    animation: none;
+  }
+
+  .launcher-button,
+  .launcher-button::before,
+  .launcher-button b {
+    transition: none;
+  }
 }
