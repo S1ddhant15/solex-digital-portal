@@ -47,7 +47,7 @@ function closeApp() {
   document.getElementById("appFrame").src = "about:blank";
   document.body.classList.remove("app-open");
   showView("homeView");
-  document.getElementById("pageTitle").textContent = "Digital Operations Overview";
+  document.getElementById("pageTitle").textContent = "Operations Command Center";
 }
 
 async function closePortalWindow() {
@@ -83,8 +83,8 @@ document.getElementById("adminNav").hidden = !user.admin;
 document.getElementById("appGrid").innerHTML = Object.entries(PORTAL_CONFIG.apps).map(([key, app]) => {
   const allowed = user.apps.includes(key);
   return `<article class="app-card ${app.color} ${allowed ? "" : "locked"}">
-    <div class="app-card-head"><div class="app-icon">${app.icon}</div><b class="access-pill">${allowed ? "AVAILABLE" : "RESTRICTED"}</b></div><span>${app.short}</span><h3>${app.name}</h3><p>${app.description}</p>
-    <div class="card-footer"><b>${allowed ? "Access granted" : "Restricted"}</b><button data-app="${key}" ${allowed ? "" : "disabled"}>${allowed ? "Open application →" : "No access"}</button></div>
+    <div class="app-card-head"><div class="app-icon">${app.icon}</div><b class="access-pill">${allowed ? "AUTHORISED" : "RESTRICTED"}</b></div><span>${app.short}</span><h3>${app.name}</h3><p>${app.description}</p>
+    <div class="card-footer"><b>${allowed ? "Role access active" : "Restricted"}</b><button data-app="${key}" ${allowed ? "" : "disabled"}>${allowed ? "Enter workspace →" : "No access"}</button></div>
   </article>`;
 }).join("");
 
@@ -97,8 +97,8 @@ document.querySelectorAll("[data-view]").forEach(button => button.addEventListen
     document.body.classList.remove("app-open");
     setSidebar(false);
   }
-  if (target === "profile") { showView("profileView"); document.getElementById("pageTitle").textContent = "My Profile"; }
-  if (target === "admin" && user.admin) { showView("adminView"); document.getElementById("pageTitle").textContent = "Access Administration"; }
+  if (target === "profile") { showView("profileView"); document.getElementById("pageTitle").textContent = "My Workspace"; }
+  if (target === "admin" && user.admin) { showView("adminView"); document.getElementById("pageTitle").textContent = "Role & Access Control"; }
 }));
 document.getElementById("backButton").addEventListener("click", closeApp);
 document.addEventListener("keydown", event => {

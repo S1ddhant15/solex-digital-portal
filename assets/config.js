@@ -4,24 +4,24 @@ const PORTAL_CONFIG = {
   apps: {
     mes: {
       name: "Analytics",
-      short: "Manufacturing Analytics",
-      description: "Department-controlled production, quality, maintenance and management intelligence in one operational view.",
+      short: "Manufacturing Intelligence",
+      description: "Role-based visibility of production, quality, reliability and management performance.",
       icon: "▦",
       color: "blue",
       url: "https://s1ddhant15.github.io/solex-mes-portal/dashboard.html"
     },
     sama: {
       name: "SAMA",
-      short: "AI Operations & Maintenance",
-      description: "Live machine condition, maintenance status, cycle time, output, rejection and controlled process parameters.",
+      short: "AI Operations Intelligence",
+      description: "Shift handover, machine condition, problems, troubleshooting, output, rejection and controlled process intelligence.",
       icon: "✦",
       color: "orange",
       url: "https://s1ddhant15.github.io/solex-ai-maintenance/"
     },
     learning: {
       name: "e‑Vidhyalaya",
-      short: "Learning & Development",
-      description: "Courses, assessments, progress tracking, skill development and employee certificates.",
+      short: "Capability Development",
+      description: "Role-based learning, assessments, progress, skills and employee certification.",
       icon: "▶",
       color: "navy",
       url: "https://s1ddhant15.github.io/solex-e-vidhalaya/"

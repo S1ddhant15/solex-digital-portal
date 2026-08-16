@@ -1,4 +1,4 @@
-/* Solex Digital Operations Portal — V12 premium interface layer */
+/* Solex Digital Operations Portal — V14 executive premium interface */
 
 :root {
   --premium-orange: #f47b20;
@@ -15,6 +15,8 @@
   --premium-shadow: 0 14px 38px rgba(26, 31, 36, .09);
   --premium-shadow-hover: 0 24px 54px rgba(26, 31, 36, .16);
   --premium-radius: 18px;
+  --font-display: "Segoe UI Variable Display", "Aptos Display", Inter, "Segoe UI", Arial, sans-serif;
+  --font-body: "Segoe UI Variable Text", Aptos, Inter, "Segoe UI", Arial, sans-serif;
 }
 
 * {
@@ -30,6 +32,7 @@
 html { background: var(--premium-canvas); }
 
 body {
+  font-family: var(--font-body);
   color: var(--premium-charcoal);
   background:
     radial-gradient(circle at 82% 3%, rgba(244, 123, 32, .09), transparent 26rem),
@@ -1509,4 +1512,355 @@ body.app-open .frame-toolbar a {
   .launcher-claim::before,
   .launcher-claim::after { width: 13px; margin-right: 6px; margin-left: 6px; }
   .login-suite-mark b { display: none; }
+}
+
+/* V14 — executive typography and language-led refinement */
+
+body,
+button,
+input,
+select,
+textarea {
+  font-family: var(--font-body);
+  font-optical-sizing: auto;
+}
+
+h1,
+h2,
+h3,
+.launcher-button,
+.primary-btn,
+.topbar-title,
+.brand-stats strong,
+.kpi-grid article > b,
+.banner-mark strong {
+  font-family: var(--font-display);
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+  font-synthesis: none;
+}
+
+button,
+a,
+input {
+  letter-spacing: -.01em;
+}
+
+.launcher-eyebrow,
+.brand-copy > span,
+.eyebrow,
+.login-suite-mark,
+.topbar-title > span,
+.welcome-banner > div:first-child > span,
+.section-heading small,
+.panel-heading > span,
+.page-eyebrow,
+.access-pill,
+.kpi-grid article > em {
+  font-family: var(--font-display);
+  font-weight: 760;
+  letter-spacing: .15em;
+}
+
+.launcher-card {
+  padding-top: clamp(56px, 7vh, 82px);
+  padding-bottom: clamp(54px, 6vh, 76px);
+}
+
+.launcher-eyebrow {
+  font-size: 10px;
+  letter-spacing: .24em;
+}
+
+.launcher-card h1 {
+  margin-top: 17px;
+  font-size: clamp(48px, 6vw, 74px);
+  font-weight: 720;
+  line-height: .98;
+  letter-spacing: -.055em;
+}
+
+.launcher-claim {
+  max-width: 560px;
+  margin-right: auto;
+  margin-left: auto;
+  font-size: 12px;
+  font-weight: 520;
+  line-height: 1.55;
+  letter-spacing: .045em;
+}
+
+.launcher-button {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -.015em;
+}
+
+.brand-copy > span {
+  font-size: 10px;
+  letter-spacing: .23em;
+}
+
+.brand-copy h1 {
+  max-width: 750px;
+  margin-top: 20px;
+  font-size: clamp(49px, 4.2vw, 70px);
+  font-weight: 690;
+  line-height: 1.01;
+  letter-spacing: -.055em;
+}
+
+.brand-copy p {
+  max-width: 675px;
+  margin-top: 20px;
+  font-size: 14px;
+  line-height: 1.72;
+  letter-spacing: -.005em;
+}
+
+.brand-stats strong {
+  font-weight: 760;
+  letter-spacing: -.035em;
+  font-variant-numeric: tabular-nums;
+}
+
+.brand-stats small {
+  font-size: 9px;
+  font-weight: 560;
+  letter-spacing: .01em;
+}
+
+.login-panel h2 {
+  margin-top: 11px;
+  font-size: clamp(36px, 3vw, 44px);
+  font-weight: 680;
+  line-height: 1.06;
+  letter-spacing: -.045em;
+}
+
+.login-panel .muted {
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.login-panel label {
+  font-size: 9px;
+  font-weight: 720;
+  letter-spacing: .015em;
+}
+
+.login-panel input {
+  font-size: 13px;
+  font-weight: 520;
+}
+
+.primary-btn {
+  font-size: 13px;
+  font-weight: 720;
+}
+
+.access-assurance div b {
+  font-size: 11px;
+  font-weight: 710;
+  letter-spacing: -.01em;
+}
+
+.access-assurance div small {
+  font-size: 9px;
+  line-height: 1.55;
+}
+
+.sidebar h1 {
+  font-family: var(--font-display);
+  font-weight: 710;
+  letter-spacing: -.035em;
+}
+
+.sidebar > p {
+  font-weight: 520;
+  letter-spacing: .02em;
+}
+
+.sidebar nav button {
+  font-size: 12px;
+  font-weight: 610;
+  letter-spacing: -.005em;
+}
+
+.topbar-title h2 {
+  font-size: 20px;
+  font-weight: 680;
+  letter-spacing: -.035em;
+}
+
+.topbar-title small,
+.user-chip small {
+  font-variant-numeric: tabular-nums;
+}
+
+.welcome-banner h2 {
+  max-width: 720px;
+  font-size: clamp(33px, 3.2vw, 46px);
+  font-weight: 650;
+  line-height: 1.04;
+  letter-spacing: -.045em;
+}
+
+.welcome-banner h2 b { font-weight: 760; }
+
+.welcome-banner p {
+  max-width: 700px;
+  margin-top: 13px;
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.banner-mark strong {
+  font-weight: 760;
+  letter-spacing: -.035em;
+}
+
+.banner-mark small {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: .13em;
+}
+
+.kpi-label span {
+  font-size: 10px;
+  letter-spacing: .005em;
+}
+
+.kpi-grid article > b {
+  font-weight: 710;
+  letter-spacing: -.045em;
+  font-variant-numeric: tabular-nums;
+}
+
+.kpi-grid article > small {
+  font-size: 9px;
+  line-height: 1.45;
+}
+
+.section-heading h3 {
+  font-family: var(--font-display);
+  font-size: 25px;
+  font-weight: 690;
+  letter-spacing: -.035em;
+}
+
+.section-heading p {
+  color: #757c82;
+  font-size: 9px;
+  font-weight: 560;
+}
+
+.app-card > span {
+  font-family: var(--font-display);
+  font-size: 9px;
+  font-weight: 760;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.app-card h3 {
+  font-family: var(--font-display);
+  font-size: 25px;
+  font-weight: 700;
+  letter-spacing: -.04em;
+}
+
+.app-card p {
+  font-size: 11px;
+  line-height: 1.65;
+}
+
+.card-footer b {
+  font-size: 8px;
+  font-weight: 760;
+  letter-spacing: .03em;
+  text-transform: uppercase;
+}
+
+.card-footer button,
+.quick-grid button,
+.frame-toolbar button,
+.frame-toolbar a {
+  font-weight: 680;
+}
+
+.panel-heading h3 {
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 680;
+  letter-spacing: -.025em;
+}
+
+.quick-grid button span {
+  font-size: 11px;
+  font-weight: 680;
+}
+
+.quick-grid button small,
+.activity small {
+  font-size: 9px;
+  font-weight: 480;
+  line-height: 1.45;
+}
+
+.activity b { font-weight: 680; }
+
+.page-card h2 {
+  font-family: var(--font-display);
+  font-size: 34px;
+  font-weight: 690;
+  line-height: 1.08;
+  letter-spacing: -.045em;
+}
+
+.page-intro {
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.profile-details span,
+th {
+  font-weight: 700;
+  letter-spacing: .035em;
+}
+
+.profile-details b,
+td {
+  font-variant-numeric: tabular-nums;
+}
+
+body.app-open .frame-toolbar div b {
+  font-family: var(--font-display);
+  font-weight: 690;
+  letter-spacing: -.02em;
+}
+
+body.app-open .frame-toolbar div small {
+  font-weight: 520;
+  letter-spacing: .015em;
+}
+
+@media (max-width: 1180px) and (min-width: 761px) {
+  .brand-copy h1 { font-size: clamp(43px, 4.6vw, 58px); }
+  .brand-copy p { max-width: 580px; }
+}
+
+@media (max-width: 760px) {
+  .launcher-card h1 { letter-spacing: -.045em; }
+  .brand-copy h1,
+  .login-panel h2,
+  .welcome-banner h2,
+  .page-card h2 { letter-spacing: -.035em; }
+  .topbar-title h2 { font-size: 15px; }
+  .section-heading h3 { font-size: 22px; }
+  .app-card h3 { font-size: 23px; }
 }
