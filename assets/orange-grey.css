@@ -139,6 +139,38 @@ body.sidebar-collapsed .main-content {
   border-bottom: 3px solid var(--orange);
 }
 
+.app-open .topbar {
+  display: none;
+}
+
+.app-open .sidebar {
+  display: block;
+  z-index: 220;
+  box-shadow: 8px 0 28px #0008;
+}
+
+.app-open.sidebar-collapsed .sidebar {
+  transform: translateX(-100%);
+}
+
+.app-open:not(.sidebar-collapsed) .sidebar {
+  transform: none;
+}
+
+.app-menu-button {
+  flex: 0 0 39px;
+  width: 39px;
+  height: 36px;
+  padding: 0 !important;
+  background: #3c3f43 !important;
+  color: #fff !important;
+  font-size: 19px;
+}
+
+.app-menu-button:hover {
+  background: var(--orange) !important;
+}
+
 @media (max-width: 760px) {
   .sidebar {
     transform: translateX(-100%);

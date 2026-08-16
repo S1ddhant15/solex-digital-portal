@@ -14,9 +14,12 @@ function showView(id) {
 }
 function setSidebar(open) {
   document.body.classList.toggle("sidebar-collapsed", !open);
-  const menuButton = document.getElementById("menuButton");
-  menuButton.setAttribute("aria-expanded", String(open));
-  menuButton.setAttribute("aria-label", open ? "Close navigation" : "Open navigation");
+  ["menuButton", "appMenuButton"].forEach(id => {
+    const menuButton = document.getElementById(id);
+    if (!menuButton) return;
+    menuButton.setAttribute("aria-expanded", String(open));
+    menuButton.setAttribute("aria-label", open ? "Close portal navigation" : "Open portal navigation");
+  });
 }
 function toast(message) {
   const element = document.getElementById("toast");
@@ -35,6 +38,7 @@ function openApp(key) {
   document.getElementById("appFrame").src = appUrl;
   document.getElementById("openNewTab").href = appUrl;
   document.getElementById("pageTitle").textContent = app.name;
+  setSidebar(false);
   document.body.classList.add("app-open");
   showView("appView");
 }
@@ -66,7 +70,12 @@ document.getElementById("appGrid").innerHTML = Object.entries(PORTAL_CONFIG.apps
 document.querySelectorAll("[data-app]").forEach(button => button.addEventListener("click", () => openApp(button.dataset.app)));
 document.querySelectorAll("[data-view]").forEach(button => button.addEventListener("click", () => {
   const target = button.dataset.view;
-  if (target === "home") { showView("homeView"); document.getElementById("pageTitle").textContent = "Digital Operations Overview"; }
+  if (target === "home") { closeApp(); return; }
+  if (document.body.classList.contains("app-open")) {
+    document.getElementById("appFrame").src = "about:blank";
+    document.body.classList.remove("app-open");
+    setSidebar(false);
+  }
   if (target === "profile") { showView("profileView"); document.getElementById("pageTitle").textContent = "My Profile"; }
   if (target === "admin" && user.admin) { showView("adminView"); document.getElementById("pageTitle").textContent = "Access Administration"; }
 }));
@@ -76,6 +85,10 @@ document.addEventListener("keydown", event => {
 });
 document.getElementById("logoutButton").addEventListener("click", logout);
 document.getElementById("menuButton").addEventListener("click", () => setSidebar(document.body.classList.contains("sidebar-collapsed")));
+document.getElementById("appMenuButton").addEventListener("click", event => {
+  event.stopPropagation();
+  setSidebar(document.body.classList.contains("sidebar-collapsed"));
+});
 document.addEventListener("click", event => {
   if (!window.matchMedia("(max-width: 760px)").matches || document.body.classList.contains("sidebar-collapsed")) return;
   if (!document.getElementById("sidebar").contains(event.target) && !document.getElementById("menuButton").contains(event.target)) setSidebar(false);
