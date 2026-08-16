@@ -12,7 +12,16 @@ function getSession() {
 }
 
 function createSession(user) {
-  const safeUser = { id: user.id, name: user.name, department: user.department, role: user.role, apps: user.apps, admin: user.admin };
+  const safeUser = {
+    id: user.id,
+    name: user.name,
+    department: user.department,
+    role: user.role,
+    apps: user.apps,
+    admin: user.admin,
+    permissions: user.permissions || [],
+    samaLanding: user.samaLanding || ""
+  };
   const session = { user: safeUser, loginAt: new Date().toISOString(), expiresAt: Date.now() + PORTAL_CONFIG.sessionHours * 3600000 };
   sessionStorage.setItem(SESSION_KEY, JSON.stringify(session));
   return session;

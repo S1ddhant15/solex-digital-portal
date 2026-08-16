@@ -2,6 +2,7 @@ const session = getSession();
 if (!session) location.replace("index.html");
 
 const user = session.user;
+const userPermissions = Array.isArray(user.permissions) ? user.permissions : [];
 const views = document.querySelectorAll(".view");
 const navButtons = document.querySelectorAll(".sidebar nav button");
 
@@ -19,12 +20,24 @@ function toast(message) {
 function openApp(key) {
   if (!user.apps.includes(key)) return toast("You do not have access to this application.");
   const app = PORTAL_CONFIG.apps[key];
+  let appUrl = app.url;
+  if (key === "sama" && user.samaLanding) {
+    appUrl = new URL(user.samaLanding, app.url).href;
+  }
   document.getElementById("frameTitle").textContent = app.name;
   document.getElementById("frameDescription").textContent = app.short;
-  document.getElementById("appFrame").src = app.url;
-  document.getElementById("openNewTab").href = app.url;
+  document.getElementById("appFrame").src = appUrl;
+  document.getElementById("openNewTab").href = appUrl;
   document.getElementById("pageTitle").textContent = app.name;
+  document.body.classList.add("app-open");
   showView("appView");
+}
+
+function closeApp() {
+  document.getElementById("appFrame").src = "about:blank";
+  document.body.classList.remove("app-open");
+  showView("homeView");
+  document.getElementById("pageTitle").textContent = "Digital Operations Overview";
 }
 
 document.getElementById("userName").textContent = user.name;
@@ -51,12 +64,15 @@ document.querySelectorAll("[data-view]").forEach(button => button.addEventListen
   if (target === "profile") { showView("profileView"); document.getElementById("pageTitle").textContent = "My Profile"; }
   if (target === "admin" && user.admin) { showView("adminView"); document.getElementById("pageTitle").textContent = "Access Administration"; }
 }));
-document.getElementById("backButton").addEventListener("click", () => { document.getElementById("appFrame").src = "about:blank"; showView("homeView"); document.getElementById("pageTitle").textContent = "Digital Operations Overview"; });
+document.getElementById("backButton").addEventListener("click", closeApp);
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape" && document.body.classList.contains("app-open")) closeApp();
+});
 document.getElementById("logoutButton").addEventListener("click", logout);
 document.getElementById("menuButton").addEventListener("click", () => document.getElementById("sidebar").classList.toggle("open"));
 
-document.getElementById("profileDetails").innerHTML = `<div><span>Employee ID</span><b>${user.id}</b></div><div><span>Name</span><b>${user.name}</b></div><div><span>Department</span><b>${user.department}</b></div><div><span>Role</span><b>${user.role}</b></div><div><span>Application access</span><b>${user.apps.map(key => PORTAL_CONFIG.apps[key].name).join(", ")}</b></div>`;
-document.getElementById("userTable").innerHTML = `<div class="table-wrap"><table><thead><tr><th>Employee ID</th><th>Name</th><th>Department</th><th>Role</th><th>Applications</th></tr></thead><tbody>${PORTAL_CONFIG.demoUsers.map(item => `<tr><td>${item.id}</td><td>${item.name}</td><td>${item.department}</td><td>${item.role}</td><td>${item.apps.join(", ")}</td></tr>`).join("")}</tbody></table></div>`;
+document.getElementById("profileDetails").innerHTML = `<div><span>Employee ID</span><b>${user.id}</b></div><div><span>Name</span><b>${user.name}</b></div><div><span>Department</span><b>${user.department}</b></div><div><span>Role</span><b>${user.role}</b></div><div><span>Application access</span><b>${user.apps.map(key => PORTAL_CONFIG.apps[key].name).join(", ")}</b></div><div><span>SAMA permission profile</span><b>${userPermissions.length ? userPermissions.length + " permissions" : "Not assigned"}</b></div>`;
+document.getElementById("userTable").innerHTML = `<div class="table-wrap"><table><thead><tr><th>Employee ID</th><th>Name</th><th>Department</th><th>Role</th><th>Applications</th><th>SAMA rights</th></tr></thead><tbody>${PORTAL_CONFIG.demoUsers.map(item => `<tr><td>${item.id}</td><td>${item.name}</td><td>${item.department}</td><td>${item.role}</td><td>${item.apps.join(", ")}</td><td>${(item.permissions || []).length}</td></tr>`).join("")}</tbody></table></div>`;
 
 function updateClock() { document.getElementById("liveClock").textContent = new Date().toLocaleString("en-IN", {weekday:"short", day:"2-digit", month:"short", year:"numeric", hour:"2-digit", minute:"2-digit", second:"2-digit"}); }
 updateClock(); setInterval(updateClock, 1000);

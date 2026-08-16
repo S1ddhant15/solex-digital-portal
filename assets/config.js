@@ -12,8 +12,8 @@ const PORTAL_CONFIG = {
     },
     sama: {
       name: "SAMA",
-      short: "AI Maintenance Assistant",
-      description: "Machine troubleshooting, alarms, preventive maintenance, spares and equipment knowledge.",
+      short: "AI Operations & Maintenance",
+      description: "Live machine condition, maintenance status, cycle time, output, rejection and controlled process parameters.",
       icon: "✦",
       color: "orange",
       url: "https://s1ddhant15.github.io/solex-ai-maintenance/"
@@ -28,10 +28,76 @@ const PORTAL_CONFIG = {
     }
   },
   demoUsers: [
-    { id: "SX1001", password: "Admin@123", name: "Siddhant Tripathi", department: "Operations Excellence", role: "Administrator", apps: ["mes", "sama", "learning"], admin: true },
-    { id: "SX2001", password: "Maint@123", name: "Maintenance User", department: "Maintenance", role: "Engineer", apps: ["mes", "sama", "learning"], admin: false },
-    { id: "SX3001", password: "Prod@123", name: "Production User", department: "Production", role: "Executive", apps: ["mes", "learning"], admin: false },
-    { id: "SX4001", password: "Quality@123", name: "Quality User", department: "Quality", role: "Engineer", apps: ["mes", "learning"], admin: false },
-    { id: "SX5001", password: "Learn@123", name: "L&D User", department: "Human Resources", role: "Learning Administrator", apps: ["learning"], admin: false }
+    {
+      id: "SX1001", password: "Admin@123", name: "Siddhant Tripathi",
+      department: "Operations Excellence", role: "Administrator",
+      apps: ["mes", "sama", "learning"], admin: true,
+      samaLanding: "pages/operations.html",
+      permissions: [
+        "sama.operations.view", "sama.production.view", "sama.maintenance.view",
+        "sama.parameters.view", "sama.parameters.request", "sama.parameters.approve",
+        "sama.audit.view"
+      ]
+    },
+    {
+      id: "SX2001", password: "Maint@123", name: "Maintenance User",
+      department: "Maintenance", role: "Engineer",
+      apps: ["mes", "sama", "learning"], admin: false,
+      samaLanding: "pages/operations.html",
+      permissions: [
+        "sama.operations.view", "sama.production.view", "sama.maintenance.view",
+        "sama.parameters.view", "sama.audit.view"
+      ]
+    },
+    {
+      id: "SX3001", password: "Prod@123", name: "Production User",
+      department: "Production", role: "Executive",
+      apps: ["mes", "sama", "learning"], admin: false,
+      samaLanding: "pages/operations.html",
+      permissions: [
+        "sama.operations.view", "sama.production.view", "sama.maintenance.view"
+      ]
+    },
+    {
+      id: "SX4001", password: "Quality@123", name: "Quality User",
+      department: "Quality", role: "Engineer",
+      apps: ["mes", "sama", "learning"], admin: false,
+      samaLanding: "pages/operations.html",
+      permissions: [
+        "sama.operations.view", "sama.production.view", "sama.maintenance.view",
+        "sama.parameters.view", "sama.parameters.request", "sama.audit.view"
+      ]
+    },
+    {
+      id: "SX4501", password: "Process@123", name: "Process Engineering User",
+      department: "Process Engineering", role: "Process Engineer",
+      apps: ["mes", "sama", "learning"], admin: false,
+      samaLanding: "pages/operations.html",
+      permissions: [
+        "sama.operations.view", "sama.production.view", "sama.maintenance.view",
+        "sama.parameters.view", "sama.parameters.request", "sama.parameters.approve",
+        "sama.audit.view"
+      ]
+    },
+    {
+      id: "SX5001", password: "Learn@123", name: "L&D User",
+      department: "Human Resources", role: "Learning Administrator",
+      apps: ["learning"], admin: false, permissions: []
+    },
+    {
+      id: "SX6001", password: "Ppc@123", name: "PPC User",
+      department: "PPC", role: "Planner",
+      apps: ["mes", "learning"], admin: false, permissions: []
+    },
+    {
+      id: "SX7001", password: "Manage@123", name: "Management User",
+      department: "Management", role: "Leadership Viewer",
+      apps: ["mes", "sama", "learning"], admin: false,
+      samaLanding: "pages/operations.html",
+      permissions: [
+        "sama.operations.view", "sama.production.view", "sama.maintenance.view",
+        "sama.parameters.view", "sama.audit.view"
+      ]
+    }
   ]
 };
