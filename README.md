@@ -8,13 +8,14 @@ Unified entry point for Solex Manufacturing Analytics, SAMA AI Maintenance Assis
 - Use the **☰ menu button** to open or close the sidebar on desktop and mobile.
 - The shared theme uses Solex orange, charcoal and grey across login, overview and application controls.
 - Applications open in a full-viewport embedded workspace. Deep links such as `index.html?app=learning` return to the requested application after authentication.
-- The full-screen application toolbar includes its own **☰ portal menu**, so navigation remains available while MES, SAMA or e‑Vidhyalaya is open.
+- The full-screen application toolbar includes its own **☰ portal menu**, so navigation remains available while Analytics, SAMA or e‑Vidhyalaya is open.
 - e‑Vidhyalaya reads the same `solexPortalSession` used by MES and SAMA; it does not maintain a separate user list.
-- Use `launcher.html` as the official portal link. Its premium solar-module screen requests true browser fullscreen from the **Open Digital Operations Portal** click, then opens login and the complete portal inside that same fullscreen document. **Close Portal ×** closes the portal experience and exits fullscreen.
+- Use `launcher.html` as the official portal link. Its premium solar-module screen requests true browser fullscreen from the **Enter Digital Operations** click, then opens login and the complete portal inside that same fullscreen document. **Close Portal ×** closes the portal experience and exits fullscreen.
 - The launcher restores the Solex logo and the ecosystem flow **SEE → ANALYZE → SOLVE → LEARN → IMPROVE**. In standalone mode the portal remains inside the same full-screen document after login, preventing navigation from cancelling browser full-screen.
 - Browser security prevents any public URL from entering fullscreen automatically during page load. The launcher therefore starts fullscreen at the earliest permitted moment: the **Open Digital Operations Portal** click, before the login screen appears.
 - The V12 premium interface adds a unified glass-and-metal visual system across launcher, login, overview, navigation, KPI cards, application cards, profile, administration and docked application controls without changing access logic.
 - The V13 refinement removes all visible prototype employee IDs/passwords from the login interface and adds stronger Solex solar-manufacturing branding across the complete experience.
+- The V14 executive refinement introduces a variable-style corporate typography system and rewrites launcher, login, command center, cards, profile, access control and application actions with clearer operational language.
 - Embedded application controls are docked below the application instead of floating over the Analytics, SAMA or e‑Vidhyalaya header.
 - A browser tab opened directly at `index.html` cannot always be closed by page JavaScript. For reliable close-window behaviour, launch through `launcher.html` and allow popups for the GitHub Pages site.
 
@@ -49,4 +50,4 @@ The included login is a working **front-end prototype**, not production security
 
 ## Embedding note
 
-The portal opens applications inside an iframe. If a future host sends an `X-Frame-Options` or CSP restriction, use the **Open in new tab** button or host all modules beneath the same protected domain.
+The portal opens applications inside an iframe. If a future host sends an `X-Frame-Options` or CSP restriction, use **Open separately** or host all modules beneath the same protected domain.

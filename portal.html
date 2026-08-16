@@ -7,21 +7,21 @@
   <title>Solex Digital Operations Portal</title>
   <link rel="stylesheet" href="assets/portal.css">
   <link rel="stylesheet" href="assets/orange-grey.css">
-  <link rel="stylesheet" href="assets/premium.css?v=13">
+  <link rel="stylesheet" href="assets/premium.css?v=14">
 </head>
 <body class="sidebar-collapsed">
   <aside class="sidebar" id="sidebar">
     <div class="sidebar-logo"><img src="assets/solex-logo.png" alt="Solex Energies"></div>
-    <h1>Digital Portal</h1><p>Connected Operations</p>
-    <div class="sidebar-claim">One Plant. One Platform.</div>
+    <h1>Digital Operations</h1><p>Connected Intelligence</p>
+    <div class="sidebar-claim">One Plant. One Truth.</div>
     <div class="sidebar-flow"><b>SEE</b><i>→</i><b>ANALYZE</b><i>→</i><b>SOLVE</b></div>
     <nav>
-      <button class="active" data-view="home"><span class="nav-icon">⌂</span>Overview</button>
+      <button class="active" data-view="home"><span class="nav-icon">⌂</span>Command Center</button>
       <button data-app="mes"><span class="nav-icon">▦</span>Analytics</button>
       <button data-app="sama"><span class="nav-icon">✦</span>SAMA</button>
       <button data-app="learning"><span class="nav-icon">▶</span>e‑Vidhyalaya</button>
-      <button data-view="profile"><span class="nav-icon">♙</span>My Profile</button>
-      <button data-view="admin" id="adminNav"><span class="nav-icon">⚙</span>Administration</button>
+      <button data-view="profile"><span class="nav-icon">♙</span>My Workspace</button>
+      <button data-view="admin" id="adminNav"><span class="nav-icon">⚙</span>Access Control</button>
     </nav>
     <div class="sidebar-footer"><span class="status-dot"></span> All systems operational<small>Solex Digital Transformation</small></div>
   </aside>
@@ -29,39 +29,39 @@
   <main class="main-content">
     <header class="topbar">
       <button id="menuButton" class="menu-button" type="button" aria-label="Open navigation" aria-controls="sidebar" aria-expanded="false">☰</button>
-      <div class="topbar-title"><span>SOLEX DIGITAL OPERATIONS</span><h2 id="pageTitle">Digital Operations Overview</h2><small id="liveClock"></small></div>
+      <div class="topbar-title"><span>SOLEX DIGITAL OPERATIONS</span><h2 id="pageTitle">Operations Command Center</h2><small id="liveClock"></small></div>
       <span class="live-badge"><i></i> LIVE</span>
       <div class="user-chip"><span id="userInitials">ST</span><div><b id="userName">User</b><small id="userDepartment">Department</small></div></div>
       <button id="closePortalButton" class="close-portal-button" type="button" title="Close the Digital Operations Portal">Close Portal ×</button>
-      <button id="logoutButton" class="logout-button">Logout</button>
+      <button id="logoutButton" class="logout-button">Sign out</button>
     </header>
 
     <section id="homeView" class="workspace view active-view">
       <div class="welcome-banner">
-        <div><span>SOLE​X DIGITAL ECOSYSTEM</span><h2>Welcome, <b id="welcomeName">User</b></h2><p>Connect data, intelligence and people to power better operational decisions.</p><small class="hero-claim">Clean Energy. Smarter Operations.</small><div class="hero-flow"><b>SEE</b><i>→</i><b>ANALYZE</b><i>→</i><b>SOLVE</b><i>→</i><b>LEARN</b><i>→</i><b>IMPROVE</b></div></div>
+        <div><span>SOLEX OPERATIONS INTELLIGENCE</span><h2>Good to see you, <b id="welcomeName">User</b></h2><p>See plant performance, analyze loss, solve priorities and strengthen capability from one connected workspace.</p><small class="hero-claim">Clean Energy. Smarter Operations.</small><div class="hero-flow"><b>SEE</b><i>→</i><b>ANALYZE</b><i>→</i><b>SOLVE</b><i>→</i><b>LEARN</b><i>→</i><b>IMPROVE</b></div></div>
         <div class="banner-mark"><strong>ONE</strong><small>PLANT · PLATFORM<br>VERSION OF TRUTH</small></div>
       </div>
       <section class="kpi-grid">
-        <article><div class="kpi-label"><i>▦</i><span>Applications Available</span></div><b id="availableApps">0</b><small>Based on your access</small><em>CONTROLLED</em></article>
-        <article><div class="kpi-label"><i>◇</i><span>Department</span></div><b class="text-kpi" id="departmentKpi">—</b><small>Role-based workspace</small><em>ASSIGNED</em></article>
-        <article><div class="kpi-label"><i>●</i><span>Portal Status</span></div><b class="green">Online</b><small>All services accessible</small><em class="live-em">LIVE</em></article>
-        <article><div class="kpi-label"><i>◷</i><span>Last Login</span></div><b class="text-kpi" id="lastLogin">Just now</b><small>Current session</small><em>SECURE</em></article>
+        <article><div class="kpi-label"><i>▦</i><span>Authorised Applications</span></div><b id="availableApps">0</b><small>Available for your role</small><em>CONTROLLED</em></article>
+        <article><div class="kpi-label"><i>◇</i><span>Operating Department</span></div><b class="text-kpi" id="departmentKpi">—</b><small>Your assigned workspace</small><em>ASSIGNED</em></article>
+        <article><div class="kpi-label"><i>●</i><span>Platform Health</span></div><b class="green">Online</b><small>All authorised services available</small><em class="live-em">LIVE</em></article>
+        <article><div class="kpi-label"><i>◷</i><span>Session Started</span></div><b class="text-kpi" id="lastLogin">Just now</b><small>Protected employee session</small><em>SECURE</em></article>
       </section>
-      <div class="section-heading"><div><small>YOUR WORKSPACE</small><h3>Digital applications</h3></div><p>Select an application to continue</p></div>
+      <div class="section-heading"><div><small>CONNECTED WORKSPACE</small><h3>Your operational tools</h3></div><p>Choose a workspace to continue</p></div>
       <section id="appGrid" class="app-grid"></section>
       <section class="bottom-grid">
-        <article class="info-panel"><div class="panel-heading"><span>QUICK ACCESS</span><h3>Continue your work</h3></div><div class="quick-grid"><button data-app="mes">▦ <span>Open Analytics<small>Department dashboards</small></span><i>→</i></button><button data-app="sama">✦ <span>Ask SAMA<small>Maintenance support</small></span><i>→</i></button><button data-app="learning">▶ <span>Continue learning<small>Assigned courses</small></span><i>→</i></button></div></article>
-        <article class="info-panel"><div class="panel-heading"><span>WORKSPACE STATUS</span><h3>Connected and controlled</h3></div><div class="activity"><i class="blue"></i><p><b>Unified access enabled</b><small>One login for authorised applications</small></p><em>ACTIVE</em></div><div class="activity"><i class="orange"></i><p><b>Access controlled by role</b><small>Department-specific visibility applied</small></p><em>SECURE</em></div></article>
+        <article class="info-panel"><div class="panel-heading"><span>PRIORITY ACTIONS</span><h3>Move from insight to action</h3></div><div class="quick-grid"><button data-app="mes">▦ <span>Open Analytics<small>Performance and loss intelligence</small></span><i>→</i></button><button data-app="sama">✦ <span>Ask SAMA<small>Shift, machine and problem solving</small></span><i>→</i></button><button data-app="learning">▶ <span>Build capability<small>Courses, skills and certification</small></span><i>→</i></button></div></article>
+        <article class="info-panel"><div class="panel-heading"><span>ACCESS ASSURANCE</span><h3>Secure and synchronized</h3></div><div class="activity"><i class="blue"></i><p><b>One identity across operations</b><small>Your authorised tools share the same session</small></p><em>ACTIVE</em></div><div class="activity"><i class="orange"></i><p><b>Department controls active</b><small>Data and AI answers follow your role</small></p><em>SECURE</em></div></article>
       </section>
     </section>
 
     <section id="appView" class="app-frame-view view">
-      <div class="frame-toolbar"><button id="appMenuButton" class="app-menu-button" type="button" aria-label="Open portal navigation" aria-controls="sidebar" aria-expanded="false">☰</button><button id="backButton">← Back to main page</button><div><b id="frameTitle">Application</b><small id="frameDescription"></small></div><a id="openNewTab" target="_blank" rel="noopener">Open in new tab ↗</a><button id="appClosePortalButton" class="app-close-portal-button" type="button" title="Close the Digital Operations Portal">Close Portal ×</button></div>
+      <div class="frame-toolbar"><button id="appMenuButton" class="app-menu-button" type="button" aria-label="Open portal navigation" aria-controls="sidebar" aria-expanded="false">☰</button><button id="backButton">← Back to command center</button><div><b id="frameTitle">Application</b><small id="frameDescription"></small></div><a id="openNewTab" target="_blank" rel="noopener">Open separately ↗</a><button id="appClosePortalButton" class="app-close-portal-button" type="button" title="Close the Digital Operations Portal">Close Portal ×</button></div>
       <iframe id="appFrame" title="Solex application" loading="lazy"></iframe>
     </section>
 
-    <section id="profileView" class="workspace view"><div class="page-card"><span class="page-eyebrow">EMPLOYEE WORKSPACE</span><h2>My Profile</h2><p class="page-intro">Your identity, department and authorised application access.</p><div id="profileDetails" class="profile-details"></div></div></section>
-    <section id="adminView" class="workspace view"><div class="page-card"><span class="page-eyebrow">PORTAL GOVERNANCE</span><h2>Access Administration</h2><p class="page-intro">Prototype access matrix for department-controlled applications and SAMA permissions.</p><div class="admin-notice">Production deployment requires server-side authentication, API authorisation and audit logging.</div><div id="userTable"></div></div></section>
+    <section id="profileView" class="workspace view"><div class="page-card"><span class="page-eyebrow">EMPLOYEE CONTROL CENTER</span><h2>My Workspace</h2><p class="page-intro">Review your identity, assigned department and authorised operational tools.</p><div id="profileDetails" class="profile-details"></div></div></section>
+    <section id="adminView" class="workspace view"><div class="page-card"><span class="page-eyebrow">ACCESS GOVERNANCE</span><h2>Role &amp; Access Control</h2><p class="page-intro">Review department application access and SAMA permission profiles.</p><div class="admin-notice">Production deployment must use server-side authentication, authorisation and immutable audit logging.</div><div id="userTable"></div></div></section>
   </main>
   <div id="toast" class="toast"></div>
   <script src="assets/config.js"></script>
