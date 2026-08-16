@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Launch Solex Digital Operations Portal</title>
+  <link rel="stylesheet" href="assets/portal.css">
+  <link rel="stylesheet" href="assets/orange-grey.css">
+</head>
+<body class="launcher-page">
+  <main class="launcher-shell">
+    <section class="launcher-card">
+      <img src="assets/solex-logo.png" alt="Solex Energies">
+      <span class="eyebrow">SOLE​X DIGITAL ECOSYSTEM</span>
+      <h1>Digital Operations Portal</h1>
+      <p>Open the connected operations workspace in its own full-size browser window. After login, the portal requests true full-screen mode.</p>
+      <div class="launcher-actions">
+        <button id="openPortalButton" class="launcher-button" type="button">Open Digital Operations Portal →</button>
+        <a id="launcherFallback" class="launcher-fallback" href="index.html?standalone=1" target="_blank">Popup blocked — open portal in a new tab</a>
+      </div>
+      <p id="launcherMessage" class="launcher-message" role="status">The portal opens separately so its Close Portal button can close it directly.</p>
+      <small class="launcher-note">Your browser may ask for permission to open a popup or enter full-screen.</small>
+    </section>
+  </main>
+  <script src="assets/launcher.js"></script>
+</body>
+</html>

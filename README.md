@@ -10,6 +10,8 @@ Unified entry point for Solex Manufacturing Analytics, SAMA AI Maintenance Assis
 - Applications open in a full-viewport embedded workspace. Deep links such as `index.html?app=learning` return to the requested application after authentication.
 - The full-screen application toolbar includes its own **☰ portal menu**, so navigation remains available while MES, SAMA or e‑Vidhyalaya is open.
 - e‑Vidhyalaya reads the same `solexPortalSession` used by MES and SAMA; it does not maintain a separate user list.
+- Use `launcher.html` as the official portal link. It opens the login in a separate full-size window, the login action requests true browser full-screen, and **Close Portal ×** closes the launched window.
+- A browser tab opened directly at `index.html` cannot always be closed by page JavaScript. For reliable close-window behaviour, launch through `launcher.html` and allow popups for the GitHub Pages site.
 
 ## Publish on GitHub Pages
 
@@ -17,7 +19,7 @@ Unified entry point for Solex Manufacturing Analytics, SAMA AI Maintenance Assis
 2. Upload everything from this folder without changing the folder structure.
 3. Open **Settings → Pages**.
 4. Select **Deploy from a branch**, branch **main**, folder **/(root)** and save.
-5. Open `https://s1ddhant15.github.io/solex-digital-portal/`.
+5. Use `https://s1ddhant15.github.io/solex-digital-portal/launcher.html` as the Digital Operations Portal link.
 
 ## Prototype accounts
 
