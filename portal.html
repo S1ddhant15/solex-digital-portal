@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solex Digital Operations Portal</title>
+  <link rel="stylesheet" href="assets/css/portal.css">
+</head>
+<body>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo"><img src="assets/images/solex-logo.png" alt="Solex Energies"></div>
+    <h1>Digital Portal</h1><p>Connected Operations</p>
+    <nav>
+      <button class="active" data-view="home"><span class="nav-icon">⌂</span>Overview</button>
+      <button data-app="mes"><span class="nav-icon">▦</span>MES Portal</button>
+      <button data-app="sama"><span class="nav-icon">✦</span>SAMA</button>
+      <button data-app="learning"><span class="nav-icon">▶</span>e‑Vidhyalaya</button>
+      <button data-view="profile"><span class="nav-icon">♙</span>My Profile</button>
+      <button data-view="admin" id="adminNav"><span class="nav-icon">⚙</span>Administration</button>
+    </nav>
+    <div class="sidebar-footer"><span class="status-dot"></span> All systems operational<small>Solex Digital Transformation</small></div>
+  </aside>
+
+  <main class="main-content">
+    <header class="topbar">
+      <button id="menuButton" class="menu-button">☰</button>
+      <div><h2 id="pageTitle">Digital Operations Overview</h2><small id="liveClock"></small></div>
+      <span class="live-badge"><i></i> LIVE</span>
+      <div class="user-chip"><span id="userInitials">ST</span><div><b id="userName">User</b><small id="userDepartment">Department</small></div></div>
+      <button id="logoutButton" class="logout-button">Logout</button>
+    </header>
+
+    <section id="homeView" class="workspace view active-view">
+      <div class="welcome-banner">
+        <div><span>SOLE​X DIGITAL ECOSYSTEM</span><h2>Welcome, <b id="welcomeName">User</b></h2><p>Connect data, intelligence and people to power better operational decisions.</p></div>
+        <div class="banner-mark"><strong>ONE</strong><small>CONNECTED<br>WORKSPACE</small></div>
+      </div>
+      <section class="kpi-grid">
+        <article><span>Applications Available</span><b id="availableApps">0</b><small>Based on your access</small></article>
+        <article><span>Department</span><b class="text-kpi" id="departmentKpi">—</b><small>Role-based workspace</small></article>
+        <article><span>Portal Status</span><b class="green">Online</b><small>All services accessible</small></article>
+        <article><span>Last Login</span><b class="text-kpi" id="lastLogin">Just now</b><small>Current session</small></article>
+      </section>
+      <div class="section-heading"><div><small>YOUR WORKSPACE</small><h3>Digital applications</h3></div><p>Select an application to continue</p></div>
+      <section id="appGrid" class="app-grid"></section>
+      <section class="bottom-grid">
+        <article class="info-panel"><h3>Quick actions</h3><div class="quick-grid"><button data-app="mes">▦ <span>Open dashboards<small>MES analytics</small></span></button><button data-app="sama">✦ <span>Ask SAMA<small>Maintenance support</small></span></button><button data-app="learning">▶ <span>Continue learning<small>Assigned courses</small></span></button></div></article>
+        <article class="info-panel"><h3>Portal information</h3><div class="activity"><i class="blue"></i><p><b>Unified access enabled</b><small>One login for authorised applications</small></p></div><div class="activity"><i class="orange"></i><p><b>Access controlled by role</b><small>Department-specific visibility applied</small></p></div></article>
+      </section>
+    </section>
+
+    <section id="appView" class="app-frame-view view">
+      <div class="frame-toolbar"><button id="backButton">← Back to overview</button><div><b id="frameTitle">Application</b><small id="frameDescription"></small></div><a id="openNewTab" target="_blank" rel="noopener">Open in new tab ↗</a></div>
+      <iframe id="appFrame" title="Solex application" loading="lazy"></iframe>
+    </section>
+
+    <section id="profileView" class="workspace view"><div class="page-card"><h2>My Profile</h2><div id="profileDetails" class="profile-details"></div></div></section>
+    <section id="adminView" class="workspace view"><div class="page-card"><h2>Access Administration</h2><p>This prototype reads users from <code>assets/js/config.js</code>. For production, connect Supabase or the Solex authentication server.</p><div id="userTable"></div></div></section>
+  </main>
+  <div id="toast" class="toast"></div>
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/auth.js"></script>
+  <script src="assets/js/portal.js"></script>
+</body>
+</html>

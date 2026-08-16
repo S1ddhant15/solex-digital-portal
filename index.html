@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solex Digital Operations Portal</title>
+  <link rel="stylesheet" href="assets/css/portal.css">
+</head>
+<body class="login-page">
+  <main class="login-shell">
+    <section class="login-brand">
+      <img src="assets/images/solex-logo.png" alt="Solex Energies">
+      <div class="brand-copy">
+        <span>SOLE​X DIGITAL ECOSYSTEM</span>
+        <h1>One platform.<br>Connected operations.</h1>
+        <p>Manufacturing intelligence, maintenance assistance and workforce development—together in one secure workspace.</p>
+      </div>
+      <div class="brand-pills"><b>MES</b><b>SAMA</b><b>e‑Vidhyalaya</b></div>
+    </section>
+
+    <section class="login-panel">
+      <div class="mobile-logo"><img src="assets/images/solex-logo.png" alt="Solex Energies"></div>
+      <p class="eyebrow">EMPLOYEE ACCESS</p>
+      <h2>Welcome back</h2>
+      <p class="muted">Sign in with your Employee ID and password.</p>
+      <form id="loginForm" autocomplete="on">
+        <label for="employeeId">Employee ID</label>
+        <input id="employeeId" name="employeeId" placeholder="Example: SX1001" autocomplete="username" required>
+        <label for="password">Password</label>
+        <div class="password-wrap">
+          <input id="password" name="password" type="password" placeholder="Enter password" autocomplete="current-password" required>
+          <button type="button" id="togglePassword" aria-label="Show password">Show</button>
+        </div>
+        <button class="primary-btn" type="submit">Sign in to portal</button>
+        <p id="loginMessage" class="form-message" role="alert"></p>
+      </form>
+      <div class="demo-box">
+        <b>Prototype login</b>
+        <span>Admin: SX1001 / Admin@123</span>
+        <span>Maintenance: SX2001 / Maint@123</span>
+      </div>
+      <small class="security-note">Authorised Solex personnel only. Access activity may be monitored.</small>
+    </section>
+  </main>
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/auth.js"></script>
+</body>
+</html>
