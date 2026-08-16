@@ -83,7 +83,7 @@ document.getElementById("adminNav").hidden = !user.admin;
 document.getElementById("appGrid").innerHTML = Object.entries(PORTAL_CONFIG.apps).map(([key, app]) => {
   const allowed = user.apps.includes(key);
   return `<article class="app-card ${app.color} ${allowed ? "" : "locked"}">
-    <div class="app-icon">${app.icon}</div><span>${app.short}</span><h3>${app.name}</h3><p>${app.description}</p>
+    <div class="app-card-head"><div class="app-icon">${app.icon}</div><b class="access-pill">${allowed ? "AVAILABLE" : "RESTRICTED"}</b></div><span>${app.short}</span><h3>${app.name}</h3><p>${app.description}</p>
     <div class="card-footer"><b>${allowed ? "Access granted" : "Restricted"}</b><button data-app="${key}" ${allowed ? "" : "disabled"}>${allowed ? "Open application →" : "No access"}</button></div>
   </article>`;
 }).join("");
