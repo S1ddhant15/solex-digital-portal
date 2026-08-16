@@ -52,6 +52,10 @@ function closeApp() {
 
 async function closePortalWindow() {
   sessionStorage.removeItem("solexPortalSession");
+  if (window.parent !== window) {
+    window.parent.postMessage({ type: "solex-portal-close" }, location.origin);
+    return;
+  }
   try {
     if (window.opener && !window.opener.closed) {
       window.opener.postMessage({ type: "solex-portal-closed" }, location.origin);

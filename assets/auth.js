@@ -29,6 +29,10 @@ function createSession(user) {
 
 function logout() {
   sessionStorage.removeItem(SESSION_KEY);
+  if (window.parent !== window) {
+    window.parent.postMessage({ type: "solex-portal-logout" }, location.origin);
+    return;
+  }
   location.replace("index.html");
 }
 
@@ -43,18 +47,68 @@ function portalDestination() {
 }
 
 function requestPortalFullscreen() {
-  if (document.fullscreenElement) return;
+  if (document.fullscreenElement || document.webkitFullscreenElement) return Promise.resolve(true);
   const request = document.documentElement.requestFullscreen || document.documentElement.webkitRequestFullscreen;
-  if (!request) return;
+  if (!request) return Promise.resolve(false);
   try {
     const result = request.call(document.documentElement);
-    if (result && typeof result.catch === "function") result.catch(() => {});
+    return Promise.resolve(result).then(() => true).catch(() => false);
+  } catch { return Promise.resolve(false); }
+}
+
+function isStandaloneLaunch() {
+  return new URLSearchParams(location.search).get("standalone") === "1";
+}
+
+function launchStandalonePortal() {
+  if (document.getElementById("standalonePortalFrame")) return;
+  const destination = new URL(portalDestination(), location.href);
+  destination.searchParams.set("embedded", "1");
+  const frame = document.createElement("iframe");
+  frame.id = "standalonePortalFrame";
+  frame.className = "standalone-portal-frame";
+  frame.title = "Solex Digital Operations Portal";
+  frame.allow = "fullscreen";
+  frame.src = destination.href;
+  document.body.appendChild(frame);
+  document.body.classList.add("portal-embedded");
+}
+
+async function exitPortalFullscreen() {
+  try {
+    const exit = document.exitFullscreen || document.webkitExitFullscreen;
+    if ((document.fullscreenElement || document.webkitFullscreenElement) && exit) await exit.call(document);
   } catch {}
+}
+
+async function closeStandalonePortal() {
+  sessionStorage.removeItem(SESSION_KEY);
+  try {
+    if (window.opener && !window.opener.closed) window.opener.postMessage({ type: "solex-portal-closed" }, location.origin);
+  } catch {}
+  await exitPortalFullscreen();
+  window.close();
+  setTimeout(() => location.replace("index.html?closed=1"), 180);
+}
+
+async function resetStandaloneLogin() {
+  sessionStorage.removeItem(SESSION_KEY);
+  document.getElementById("standalonePortalFrame")?.remove();
+  document.body.classList.remove("portal-embedded", "auth-success");
+  await exitPortalFullscreen();
+  const message = document.getElementById("loginMessage");
+  if (message) {
+    message.textContent = "You have been logged out.";
+    message.className = "form-message";
+  }
 }
 
 const loginForm = document.getElementById("loginForm");
 if (loginForm) {
-  if (getSession()) location.replace(portalDestination());
+  if (getSession()) {
+    if (isStandaloneLaunch()) launchStandalonePortal();
+    else location.replace(portalDestination());
+  }
   loginForm.addEventListener("submit", event => {
     event.preventDefault();
     const id = document.getElementById("employeeId").value.trim().toUpperCase();
@@ -71,8 +125,11 @@ if (loginForm) {
     message.className = "form-message success";
     document.body.classList.add("auth-success");
     createSession(user);
-    requestPortalFullscreen();
-    setTimeout(() => location.replace(portalDestination()), 450);
+    if (isStandaloneLaunch()) {
+      requestPortalFullscreen().finally(() => setTimeout(launchStandalonePortal, 220));
+    } else {
+      setTimeout(() => location.replace(portalDestination()), 450);
+    }
   });
   document.getElementById("togglePassword").addEventListener("click", event => {
     const input = document.getElementById("password");
@@ -80,3 +137,9 @@ if (loginForm) {
     event.currentTarget.textContent = input.type === "password" ? "Show" : "Hide";
   });
 }
+
+window.addEventListener("message", event => {
+  if (event.origin !== location.origin || !loginForm) return;
+  if (event.data?.type === "solex-portal-close") closeStandalonePortal();
+  if (event.data?.type === "solex-portal-logout") resetStandaloneLogin();
+});

@@ -911,3 +911,133 @@ body.auth-success .login-shell {
     transition: none;
   }
 }
+
+/* V10 launcher branding, persistent fullscreen shell and docked app controls */
+
+.launcher-brand-logo {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 180px !important;
+  margin: 0 auto 24px;
+  padding: 11px 15px !important;
+  border: 1px solid #ffffff5c;
+  border-radius: 7px !important;
+  background: #fff;
+  box-shadow: 0 15px 35px #0007, 0 0 0 5px #ffffff0b;
+}
+
+.ecosystem-flow {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  max-width: 560px !important;
+  margin: 28px auto 0 !important;
+  color: #f3f4f4 !important;
+  font-size: clamp(10px, 1.05vw, 13px);
+  letter-spacing: 1.2px;
+}
+
+.ecosystem-flow b {
+  font-weight: 800;
+}
+
+.ecosystem-flow i {
+  color: var(--orange);
+  font-size: 17px;
+  font-style: normal;
+  text-shadow: 0 0 15px #f47b2099;
+}
+
+.launcher-actions {
+  margin-top: clamp(30px, 4vw, 42px);
+}
+
+.launcher-card {
+  padding-top: clamp(42px, 6vw, 62px);
+  padding-bottom: clamp(42px, 6vw, 58px);
+}
+
+body.portal-embedded {
+  width: 100vw;
+  height: 100dvh;
+  overflow: hidden;
+  background: #111417;
+}
+
+body.portal-embedded .login-shell {
+  visibility: hidden;
+}
+
+.standalone-portal-frame {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: block;
+  width: 100vw;
+  height: 100dvh;
+  border: 0;
+  background: #eef0f2;
+}
+
+body.app-open .app-frame-view.active-view {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) 58px;
+  width: 100vw;
+  height: 100dvh;
+  padding: 0;
+  background: #16191c;
+}
+
+body.app-open .frame-toolbar {
+  position: relative;
+  inset: auto;
+  grid-row: 2;
+  width: 100%;
+  height: 58px;
+  border: 0;
+  border-top: 3px solid var(--orange);
+  border-radius: 0;
+  background: #202326f7;
+  box-shadow: 0 -8px 24px #0004;
+  backdrop-filter: blur(12px);
+}
+
+body.app-open .app-frame-view iframe {
+  grid-row: 1;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  border-radius: 0;
+}
+
+@media (max-width: 650px) {
+  .launcher-brand-logo {
+    width: 150px !important;
+    margin-bottom: 20px;
+  }
+
+  .ecosystem-flow {
+    gap: 6px;
+    margin-top: 22px !important;
+    font-size: 9px;
+  }
+
+  body.app-open .app-frame-view.active-view {
+    grid-template-rows: minmax(0, 1fr) 54px;
+  }
+
+  body.app-open .frame-toolbar {
+    top: auto;
+    right: auto;
+    left: auto;
+    height: 54px;
+  }
+}
