@@ -11,6 +11,8 @@ Unified entry point for Solex Manufacturing Analytics, SAMA AI Maintenance Assis
 - The full-screen application toolbar includes its own **☰ portal menu**, so navigation remains available while MES, SAMA or e‑Vidhyalaya is open.
 - e‑Vidhyalaya reads the same `solexPortalSession` used by MES and SAMA; it does not maintain a separate user list.
 - Use `launcher.html` as the official portal link. Its simplified premium solar-module screen opens the login in a separate full-size popup window, the login action requests true browser full-screen, and **Close Portal ×** closes the launched window.
+- The launcher restores the Solex logo and the ecosystem flow **SEE → ANALYZE → SOLVE → LEARN → IMPROVE**. In standalone mode the portal remains inside the same full-screen document after login, preventing navigation from cancelling browser full-screen.
+- Embedded application controls are docked below the application instead of floating over the Analytics, SAMA or e‑Vidhyalaya header.
 - A browser tab opened directly at `index.html` cannot always be closed by page JavaScript. For reliable close-window behaviour, launch through `launcher.html` and allow popups for the GitHub Pages site.
 
 ## Publish on GitHub Pages
