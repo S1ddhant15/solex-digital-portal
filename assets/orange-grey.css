@@ -97,6 +97,28 @@ body.sidebar-collapsed .main-content {
   background: #373a3e;
 }
 
+.close-portal-button,
+.app-close-portal-button {
+  border: 1px solid #44484c;
+  border-radius: 6px;
+  padding: 9px 13px;
+  color: #fff;
+  background: #34373b;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.close-portal-button {
+  margin-left: 15px;
+}
+
+.close-portal-button:hover,
+.app-close-portal-button:hover {
+  border-color: #d84a43;
+  background: #bd3832;
+}
+
 .welcome-banner {
   background: linear-gradient(120deg, #292c30 0%, #52565b 57%, #ececed 57.2%);
 }
@@ -171,6 +193,16 @@ body.sidebar-collapsed .main-content {
   background: var(--orange) !important;
 }
 
+.app-open .frame-toolbar .app-close-portal-button {
+  flex: 0 0 auto;
+  border: 1px solid #f26b643f;
+  background: #a9312c;
+}
+
+.app-open .frame-toolbar .app-close-portal-button:hover {
+  background: #d44740;
+}
+
 @media (max-width: 760px) {
   .sidebar {
     transform: translateX(-100%);
@@ -187,6 +219,23 @@ body.sidebar-collapsed .main-content {
 
   .welcome-banner {
     background: linear-gradient(135deg, #292c30, #50545a);
+  }
+
+  .close-portal-button {
+    width: 38px;
+    height: 38px;
+    overflow: hidden;
+    padding: 0;
+    color: transparent;
+    white-space: nowrap;
+  }
+
+  .close-portal-button::after {
+    content: "×";
+    display: grid;
+    place-items: center;
+    color: #fff;
+    font-size: 21px;
   }
 }
 
@@ -448,4 +497,135 @@ body.auth-success .login-shell {
   .brand-stats { grid-template-columns: 1fr; }
   .app-open .frame-toolbar { top: 6px; right: 6px; left: 6px; }
   .app-open .frame-toolbar div { display: none; }
+  .app-open .frame-toolbar a { display: none; }
+  .app-open .frame-toolbar .app-close-portal-button { margin-left: auto; }
+}
+
+/* Dedicated popup launcher */
+
+.launcher-page {
+  min-height: 100dvh;
+  overflow: hidden;
+  color: #fff;
+  background:
+    linear-gradient(112deg, #202327f2 0%, #30343ae8 56%, #3d4146d4 100%),
+    url("solar-module-pattern.svg") center / cover;
+}
+
+.launcher-shell {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 100dvh;
+  padding: 28px;
+  isolation: isolate;
+}
+
+.launcher-shell::before,
+.launcher-shell::after {
+  content: "";
+  position: fixed;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.launcher-shell::before {
+  right: -180px;
+  top: -220px;
+  width: 620px;
+  height: 620px;
+  border: 100px solid #ffffff09;
+  border-radius: 50%;
+}
+
+.launcher-shell::after {
+  right: -100px;
+  bottom: -170px;
+  width: 520px;
+  height: 290px;
+  transform: skewX(-28deg);
+  background: linear-gradient(135deg, #e9650c, #ff941f);
+  box-shadow: -35px -30px 90px #f47b2038;
+}
+
+.launcher-card {
+  width: min(760px, 100%);
+  padding: clamp(30px, 6vw, 64px);
+  border: 1px solid #ffffff20;
+  border-top: 5px solid var(--orange);
+  border-radius: 18px;
+  background: #171a1dcc;
+  box-shadow: 0 26px 80px #0007;
+  text-align: center;
+  backdrop-filter: blur(16px);
+}
+
+.launcher-card img {
+  width: 182px;
+  padding: 11px 15px;
+  border-radius: 6px;
+  background: #fff;
+}
+
+.launcher-card .eyebrow {
+  display: block;
+  margin-top: 28px;
+}
+
+.launcher-card h1 {
+  margin: 12px 0 12px;
+  font-size: clamp(34px, 5vw, 56px);
+  line-height: 1.05;
+  letter-spacing: -1.5px;
+}
+
+.launcher-card > p {
+  max-width: 580px;
+  margin: 0 auto;
+  color: #d5dadd;
+  line-height: 1.65;
+}
+
+.launcher-actions {
+  display: grid;
+  gap: 12px;
+  max-width: 430px;
+  margin: 30px auto 0;
+}
+
+.launcher-button {
+  min-height: 58px;
+  border: 0;
+  border-radius: 8px;
+  color: #fff;
+  background: linear-gradient(100deg, #e9660d, #ff941f);
+  box-shadow: 0 14px 30px #f47b2040;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform .18s, box-shadow .18s;
+}
+
+.launcher-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 36px #f47b2050;
+}
+
+.launcher-fallback {
+  display: none;
+  color: #ffae57;
+  font-size: 12px;
+}
+
+.launcher-message {
+  min-height: 20px;
+  margin-top: 18px;
+  color: #bfc5ca;
+  font-size: 12px;
+}
+
+.launcher-note {
+  display: block;
+  margin-top: 20px;
+  color: #949ba1;
+  font-size: 10px;
 }

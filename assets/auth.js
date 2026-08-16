@@ -33,8 +33,13 @@ function logout() {
 }
 
 function portalDestination() {
-  const app = new URLSearchParams(location.search).get("app");
-  return app ? `portal.html?app=${encodeURIComponent(app)}` : "portal.html";
+  const incoming = new URLSearchParams(location.search);
+  const destination = new URLSearchParams();
+  const app = incoming.get("app");
+  if (app) destination.set("app", app);
+  if (incoming.get("standalone") === "1") destination.set("standalone", "1");
+  const query = destination.toString();
+  return query ? `portal.html?${query}` : "portal.html";
 }
 
 function requestPortalFullscreen() {

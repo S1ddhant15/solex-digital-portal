@@ -50,6 +50,23 @@ function closeApp() {
   document.getElementById("pageTitle").textContent = "Digital Operations Overview";
 }
 
+async function closePortalWindow() {
+  sessionStorage.removeItem("solexPortalSession");
+  try {
+    if (window.opener && !window.opener.closed) {
+      window.opener.postMessage({ type: "solex-portal-closed" }, location.origin);
+    }
+  } catch {}
+  try {
+    const exit = document.exitFullscreen || document.webkitExitFullscreen;
+    if ((document.fullscreenElement || document.webkitFullscreenElement) && exit) await exit.call(document);
+  } catch {}
+  window.close();
+  setTimeout(() => {
+    location.replace("index.html?closed=1");
+  }, 180);
+}
+
 document.getElementById("userName").textContent = user.name;
 document.getElementById("userDepartment").textContent = user.department;
 document.getElementById("userInitials").textContent = initials(user.name);
@@ -84,6 +101,8 @@ document.addEventListener("keydown", event => {
   if (event.key === "Escape" && document.body.classList.contains("app-open")) closeApp();
 });
 document.getElementById("logoutButton").addEventListener("click", logout);
+document.getElementById("closePortalButton").addEventListener("click", closePortalWindow);
+document.getElementById("appClosePortalButton").addEventListener("click", closePortalWindow);
 document.getElementById("menuButton").addEventListener("click", () => setSidebar(document.body.classList.contains("sidebar-collapsed")));
 document.getElementById("appMenuButton").addEventListener("click", event => {
   event.stopPropagation();
