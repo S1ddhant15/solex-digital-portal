@@ -3,14 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#22262a">
   <title>Solex Digital Operations Portal</title>
   <link rel="stylesheet" href="assets/portal.css">
   <link rel="stylesheet" href="assets/orange-grey.css">
+  <link rel="stylesheet" href="assets/premium.css">
 </head>
 <body class="sidebar-collapsed">
   <aside class="sidebar" id="sidebar">
     <div class="sidebar-logo"><img src="assets/solex-logo.png" alt="Solex Energies"></div>
     <h1>Digital Portal</h1><p>Connected Operations</p>
+    <div class="sidebar-flow"><b>SEE</b><i>→</i><b>ANALYZE</b><i>→</i><b>SOLVE</b></div>
     <nav>
       <button class="active" data-view="home"><span class="nav-icon">⌂</span>Overview</button>
       <button data-app="mes"><span class="nav-icon">▦</span>Analytics</button>
@@ -34,20 +37,20 @@
 
     <section id="homeView" class="workspace view active-view">
       <div class="welcome-banner">
-        <div><span>SOLE​X DIGITAL ECOSYSTEM</span><h2>Welcome, <b id="welcomeName">User</b></h2><p>Connect data, intelligence and people to power better operational decisions.</p></div>
+        <div><span>SOLE​X DIGITAL ECOSYSTEM</span><h2>Welcome, <b id="welcomeName">User</b></h2><p>Connect data, intelligence and people to power better operational decisions.</p><div class="hero-flow"><b>SEE</b><i>→</i><b>ANALYZE</b><i>→</i><b>SOLVE</b><i>→</i><b>LEARN</b><i>→</i><b>IMPROVE</b></div></div>
         <div class="banner-mark"><strong>ONE</strong><small>CONNECTED<br>WORKSPACE</small></div>
       </div>
       <section class="kpi-grid">
-        <article><span>Applications Available</span><b id="availableApps">0</b><small>Based on your access</small></article>
-        <article><span>Department</span><b class="text-kpi" id="departmentKpi">—</b><small>Role-based workspace</small></article>
-        <article><span>Portal Status</span><b class="green">Online</b><small>All services accessible</small></article>
-        <article><span>Last Login</span><b class="text-kpi" id="lastLogin">Just now</b><small>Current session</small></article>
+        <article><div class="kpi-label"><i>▦</i><span>Applications Available</span></div><b id="availableApps">0</b><small>Based on your access</small><em>CONTROLLED</em></article>
+        <article><div class="kpi-label"><i>◇</i><span>Department</span></div><b class="text-kpi" id="departmentKpi">—</b><small>Role-based workspace</small><em>ASSIGNED</em></article>
+        <article><div class="kpi-label"><i>●</i><span>Portal Status</span></div><b class="green">Online</b><small>All services accessible</small><em class="live-em">LIVE</em></article>
+        <article><div class="kpi-label"><i>◷</i><span>Last Login</span></div><b class="text-kpi" id="lastLogin">Just now</b><small>Current session</small><em>SECURE</em></article>
       </section>
       <div class="section-heading"><div><small>YOUR WORKSPACE</small><h3>Digital applications</h3></div><p>Select an application to continue</p></div>
       <section id="appGrid" class="app-grid"></section>
       <section class="bottom-grid">
-        <article class="info-panel"><h3>Quick actions</h3><div class="quick-grid"><button data-app="mes">▦ <span>Open Analytics<small>Department dashboards</small></span></button><button data-app="sama">✦ <span>Ask SAMA<small>Maintenance support</small></span></button><button data-app="learning">▶ <span>Continue learning<small>Assigned courses</small></span></button></div></article>
-        <article class="info-panel"><h3>Portal information</h3><div class="activity"><i class="blue"></i><p><b>Unified access enabled</b><small>One login for authorised applications</small></p></div><div class="activity"><i class="orange"></i><p><b>Access controlled by role</b><small>Department-specific visibility applied</small></p></div></article>
+        <article class="info-panel"><div class="panel-heading"><span>QUICK ACCESS</span><h3>Continue your work</h3></div><div class="quick-grid"><button data-app="mes">▦ <span>Open Analytics<small>Department dashboards</small></span><i>→</i></button><button data-app="sama">✦ <span>Ask SAMA<small>Maintenance support</small></span><i>→</i></button><button data-app="learning">▶ <span>Continue learning<small>Assigned courses</small></span><i>→</i></button></div></article>
+        <article class="info-panel"><div class="panel-heading"><span>WORKSPACE STATUS</span><h3>Connected and controlled</h3></div><div class="activity"><i class="blue"></i><p><b>Unified access enabled</b><small>One login for authorised applications</small></p><em>ACTIVE</em></div><div class="activity"><i class="orange"></i><p><b>Access controlled by role</b><small>Department-specific visibility applied</small></p><em>SECURE</em></div></article>
       </section>
     </section>
 
@@ -56,8 +59,8 @@
       <iframe id="appFrame" title="Solex application" loading="lazy"></iframe>
     </section>
 
-    <section id="profileView" class="workspace view"><div class="page-card"><h2>My Profile</h2><div id="profileDetails" class="profile-details"></div></div></section>
-    <section id="adminView" class="workspace view"><div class="page-card"><h2>Access Administration</h2><p>This prototype reads users from <code>assets/config.js</code>. Production use requires server-side authentication, API authorization and audit logging.</p><div id="userTable"></div></div></section>
+    <section id="profileView" class="workspace view"><div class="page-card"><span class="page-eyebrow">EMPLOYEE WORKSPACE</span><h2>My Profile</h2><p class="page-intro">Your identity, department and authorised application access.</p><div id="profileDetails" class="profile-details"></div></div></section>
+    <section id="adminView" class="workspace view"><div class="page-card"><span class="page-eyebrow">PORTAL GOVERNANCE</span><h2>Access Administration</h2><p class="page-intro">Prototype access matrix for department-controlled applications and SAMA permissions.</p><div class="admin-notice">Production deployment requires server-side authentication, API authorisation and audit logging.</div><div id="userTable"></div></div></section>
   </main>
   <div id="toast" class="toast"></div>
   <script src="assets/config.js"></script>
