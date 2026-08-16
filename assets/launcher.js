@@ -2,40 +2,50 @@ const openPortalButton = document.getElementById("openPortalButton");
 const launcherMessage = document.getElementById("launcherMessage");
 const launcherFallback = document.getElementById("launcherFallback");
 
-function openPortalWindow() {
-  const width = screen.availWidth || window.innerWidth;
-  const height = screen.availHeight || window.innerHeight;
-  const features = [
-    "popup=yes",
-    "toolbar=no",
-    "location=no",
-    "menubar=no",
-    "status=no",
-    "resizable=yes",
-    "scrollbars=yes",
-    `width=${width}`,
-    `height=${height}`,
-    "left=0",
-    "top=0"
-  ].join(",");
-  const portalWindow = window.open("index.html?standalone=1", "solexDigitalOperationsPortal", features);
-  if (!portalWindow) {
-    launcherMessage.textContent = "Popup blocked. Allow popups for this site and try again.";
-    launcherFallback.style.display = "inline";
-    return;
-  }
-  try {
-    portalWindow.moveTo(0, 0);
-    portalWindow.resizeTo(width, height);
-    portalWindow.focus();
-  } catch {}
-  launcherFallback.style.display = "none";
-  launcherMessage.textContent = "";
+function createLauncherPortalFrame() {
+  let frame = document.getElementById("launcherPortalFrame");
+  if (frame) return frame;
+  frame = document.createElement("iframe");
+  frame.id = "launcherPortalFrame";
+  frame.className = "launcher-host-frame";
+  frame.title = "Solex Digital Operations Portal";
+  frame.allow = "fullscreen";
+  frame.src = "index.html?standalone=1&launcherHost=1";
+  document.body.appendChild(frame);
+  return frame;
 }
 
-openPortalButton.addEventListener("click", openPortalWindow);
+async function openPortalFullscreen() {
+  createLauncherPortalFrame();
+  document.body.classList.add("launcher-portal-active");
+  launcherFallback.style.display = "none";
+  launcherMessage.textContent = "";
+  const request = document.documentElement.requestFullscreen || document.documentElement.webkitRequestFullscreen;
+  if (!request || document.fullscreenElement || document.webkitFullscreenElement) return;
+  try {
+    await request.call(document.documentElement);
+  } catch {
+    launcherMessage.textContent = "Browser fullscreen was blocked. Select Open Digital Operations Portal again.";
+  }
+}
+
+async function closeLauncherPortal() {
+  sessionStorage.removeItem("solexPortalSession");
+  document.getElementById("launcherPortalFrame")?.remove();
+  document.body.classList.remove("launcher-portal-active");
+  try {
+    const exit = document.exitFullscreen || document.webkitExitFullscreen;
+    if ((document.fullscreenElement || document.webkitFullscreenElement) && exit) await exit.call(document);
+  } catch {}
+  try {
+    if (window.opener && !window.opener.closed) window.opener.postMessage({ type: "solex-portal-closed" }, location.origin);
+  } catch {}
+  window.close();
+}
+
+openPortalButton.addEventListener("click", openPortalFullscreen);
 
 window.addEventListener("message", event => {
-  if (event.origin !== location.origin || event.data?.type !== "solex-portal-closed") return;
-  launcherMessage.textContent = "";
+  if (event.origin !== location.origin) return;
+  if (event.data?.type === "solex-launcher-close") closeLauncherPortal();
 });

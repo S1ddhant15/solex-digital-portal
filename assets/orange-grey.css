@@ -899,6 +899,30 @@ body.auth-success .login-shell {
   }
 }
 
+/* V11: fullscreen begins from the launcher action, before login */
+
+body.launcher-portal-active {
+  width: 100vw;
+  height: 100dvh;
+  overflow: hidden;
+  background: #111417;
+}
+
+body.launcher-portal-active .launcher-shell {
+  visibility: hidden;
+}
+
+.launcher-host-frame {
+  position: fixed;
+  inset: 0;
+  z-index: 2500;
+  display: block;
+  width: 100vw;
+  height: 100dvh;
+  border: 0;
+  background: #111417;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .launcher-page::before,
   .launcher-card {

@@ -60,6 +60,10 @@ function isStandaloneLaunch() {
   return new URLSearchParams(location.search).get("standalone") === "1";
 }
 
+function isLauncherHosted() {
+  return new URLSearchParams(location.search).get("launcherHost") === "1";
+}
+
 function launchStandalonePortal() {
   if (document.getElementById("standalonePortalFrame")) return;
   const destination = new URL(portalDestination(), location.href);
@@ -83,6 +87,10 @@ async function exitPortalFullscreen() {
 
 async function closeStandalonePortal() {
   sessionStorage.removeItem(SESSION_KEY);
+  if (window.parent !== window) {
+    window.parent.postMessage({ type: "solex-launcher-close" }, location.origin);
+    return;
+  }
   try {
     if (window.opener && !window.opener.closed) window.opener.postMessage({ type: "solex-portal-closed" }, location.origin);
   } catch {}
@@ -126,7 +134,8 @@ if (loginForm) {
     document.body.classList.add("auth-success");
     createSession(user);
     if (isStandaloneLaunch()) {
-      requestPortalFullscreen().finally(() => setTimeout(launchStandalonePortal, 220));
+      const fullscreenReady = isLauncherHosted() ? Promise.resolve(true) : requestPortalFullscreen();
+      fullscreenReady.finally(() => setTimeout(launchStandalonePortal, 220));
     } else {
       setTimeout(() => location.replace(portalDestination()), 450);
     }
