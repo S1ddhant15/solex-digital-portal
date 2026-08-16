@@ -32,9 +32,14 @@ function logout() {
   location.replace("index.html");
 }
 
+function portalDestination() {
+  const app = new URLSearchParams(location.search).get("app");
+  return app ? `portal.html?app=${encodeURIComponent(app)}` : "portal.html";
+}
+
 const loginForm = document.getElementById("loginForm");
 if (loginForm) {
-  if (getSession()) location.replace("portal.html");
+  if (getSession()) location.replace(portalDestination());
   loginForm.addEventListener("submit", event => {
     event.preventDefault();
     const id = document.getElementById("employeeId").value.trim().toUpperCase();
@@ -50,7 +55,7 @@ if (loginForm) {
     message.textContent = "Access verified. Opening your workspace…";
     message.className = "form-message success";
     createSession(user);
-    setTimeout(() => location.replace("portal.html"), 450);
+    setTimeout(() => location.replace(portalDestination()), 450);
   });
   document.getElementById("togglePassword").addEventListener("click", event => {
     const input = document.getElementById("password");

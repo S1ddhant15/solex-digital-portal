@@ -10,7 +10,13 @@ function initials(name) { return name.split(/\s+/).map(word => word[0]).slice(0,
 function showView(id) {
   views.forEach(view => view.classList.remove("active-view"));
   document.getElementById(id).classList.add("active-view");
-  document.getElementById("sidebar").classList.remove("open");
+  if (window.matchMedia("(max-width: 760px)").matches) setSidebar(false);
+}
+function setSidebar(open) {
+  document.body.classList.toggle("sidebar-collapsed", !open);
+  const menuButton = document.getElementById("menuButton");
+  menuButton.setAttribute("aria-expanded", String(open));
+  menuButton.setAttribute("aria-label", open ? "Close navigation" : "Open navigation");
 }
 function toast(message) {
   const element = document.getElementById("toast");
@@ -69,10 +75,17 @@ document.addEventListener("keydown", event => {
   if (event.key === "Escape" && document.body.classList.contains("app-open")) closeApp();
 });
 document.getElementById("logoutButton").addEventListener("click", logout);
-document.getElementById("menuButton").addEventListener("click", () => document.getElementById("sidebar").classList.toggle("open"));
+document.getElementById("menuButton").addEventListener("click", () => setSidebar(document.body.classList.contains("sidebar-collapsed")));
+document.addEventListener("click", event => {
+  if (!window.matchMedia("(max-width: 760px)").matches || document.body.classList.contains("sidebar-collapsed")) return;
+  if (!document.getElementById("sidebar").contains(event.target) && !document.getElementById("menuButton").contains(event.target)) setSidebar(false);
+});
 
 document.getElementById("profileDetails").innerHTML = `<div><span>Employee ID</span><b>${user.id}</b></div><div><span>Name</span><b>${user.name}</b></div><div><span>Department</span><b>${user.department}</b></div><div><span>Role</span><b>${user.role}</b></div><div><span>Application access</span><b>${user.apps.map(key => PORTAL_CONFIG.apps[key].name).join(", ")}</b></div><div><span>SAMA permission profile</span><b>${userPermissions.length ? userPermissions.length + " permissions" : "Not assigned"}</b></div>`;
 document.getElementById("userTable").innerHTML = `<div class="table-wrap"><table><thead><tr><th>Employee ID</th><th>Name</th><th>Department</th><th>Role</th><th>Applications</th><th>SAMA rights</th></tr></thead><tbody>${PORTAL_CONFIG.demoUsers.map(item => `<tr><td>${item.id}</td><td>${item.name}</td><td>${item.department}</td><td>${item.role}</td><td>${item.apps.join(", ")}</td><td>${(item.permissions || []).length}</td></tr>`).join("")}</tbody></table></div>`;
 
 function updateClock() { document.getElementById("liveClock").textContent = new Date().toLocaleString("en-IN", {weekday:"short", day:"2-digit", month:"short", year:"numeric", hour:"2-digit", minute:"2-digit", second:"2-digit"}); }
 updateClock(); setInterval(updateClock, 1000);
+
+const requestedApp = new URLSearchParams(location.search).get("app");
+if (requestedApp && PORTAL_CONFIG.apps[requestedApp]) openApp(requestedApp);
