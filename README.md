@@ -2,6 +2,14 @@
 
 Unified entry point for the Solex MES Portal, SAMA AI Maintenance Assistant and Solex e‑Vidhyalaya.
 
+## Interface and routing
+
+- The portal overview opens at full browser width after login with the navigation sidebar collapsed.
+- Use the **☰ menu button** to open or close the sidebar on desktop and mobile.
+- The shared theme uses Solex orange, charcoal and grey across login, overview and application controls.
+- Applications open in a full-viewport embedded workspace. Deep links such as `index.html?app=learning` return to the requested application after authentication.
+- e‑Vidhyalaya reads the same `solexPortalSession` used by MES and SAMA; it does not maintain a separate user list.
+
 ## Publish on GitHub Pages
 
 1. Create a public repository named `solex-digital-portal`.

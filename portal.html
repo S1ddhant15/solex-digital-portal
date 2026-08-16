@@ -5,8 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Solex Digital Operations Portal</title>
   <link rel="stylesheet" href="assets/portal.css">
+  <link rel="stylesheet" href="assets/orange-grey.css">
 </head>
-<body>
+<body class="sidebar-collapsed">
   <aside class="sidebar" id="sidebar">
     <div class="sidebar-logo"><img src="assets/solex-logo.png" alt="Solex Energies"></div>
     <h1>Digital Portal</h1><p>Connected Operations</p>
@@ -23,7 +24,7 @@
 
   <main class="main-content">
     <header class="topbar">
-      <button id="menuButton" class="menu-button">☰</button>
+      <button id="menuButton" class="menu-button" type="button" aria-label="Open navigation" aria-controls="sidebar" aria-expanded="false">☰</button>
       <div><h2 id="pageTitle">Digital Operations Overview</h2><small id="liveClock"></small></div>
       <span class="live-badge"><i></i> LIVE</span>
       <div class="user-chip"><span id="userInitials">ST</span><div><b id="userName">User</b><small id="userDepartment">Department</small></div></div>
