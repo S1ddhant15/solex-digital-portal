@@ -1,6 +1,6 @@
 # Solex Digital Operations Portal
 
-Unified entry point for the Solex MES Portal, SAMA AI Maintenance Assistant and Solex e‑Vidhyalaya.
+Unified entry point for Solex Manufacturing Analytics, SAMA AI Maintenance Assistant and Solex e‑Vidhyalaya.
 
 ## Interface and routing
 
@@ -45,7 +45,7 @@ Change users, permissions and application URLs inside `assets/config.js`.
 | Management | Yes | Yes | No | No |
 | Operations Excellence Admin | Yes | Yes | Yes | Yes, except own request |
 
-The active SAMA interface contains only **AI Chat** and **Machine Status**. Analytics and other legacy SAMA routes are blocked by the shared session guard.
+The active SAMA interface contains **AI Chat**, **Machine Status** and **Why SAMA**. Analytics and other legacy SAMA routes are blocked by the shared session guard.
 
 ## Security warning
 
