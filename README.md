@@ -14,6 +14,7 @@ Unified entry point for Solex Manufacturing Analytics, SAMA AI Maintenance Assis
 - The launcher restores the Solex logo and the ecosystem flow **SEE → ANALYZE → SOLVE → LEARN → IMPROVE**. In standalone mode the portal remains inside the same full-screen document after login, preventing navigation from cancelling browser full-screen.
 - Browser security prevents any public URL from entering fullscreen automatically during page load. The launcher therefore starts fullscreen at the earliest permitted moment: the **Open Digital Operations Portal** click, before the login screen appears.
 - The V12 premium interface adds a unified glass-and-metal visual system across launcher, login, overview, navigation, KPI cards, application cards, profile, administration and docked application controls without changing access logic.
+- The V13 refinement removes all visible prototype employee IDs/passwords from the login interface and adds stronger Solex solar-manufacturing branding across the complete experience.
 - Embedded application controls are docked below the application instead of floating over the Analytics, SAMA or e‑Vidhyalaya header.
 - A browser tab opened directly at `index.html` cannot always be closed by page JavaScript. For reliable close-window behaviour, launch through `launcher.html` and allow popups for the GitHub Pages site.
 
@@ -25,20 +26,9 @@ Unified entry point for Solex Manufacturing Analytics, SAMA AI Maintenance Assis
 4. Select **Deploy from a branch**, branch **main**, folder **/(root)** and save.
 5. Use `https://s1ddhant15.github.io/solex-digital-portal/launcher.html` as the Digital Operations Portal link.
 
-## Prototype accounts
+## Access configuration
 
-| Access | Employee ID | Password |
-| --- | --- | --- |
-| Administrator | SX1001 | Admin@123 |
-| Maintenance | SX2001 | Maint@123 |
-| Production | SX3001 | Prod@123 |
-| Quality | SX4001 | Quality@123 |
-| Process Engineering | SX4501 | Process@123 |
-| L&D | SX5001 | Learn@123 |
-| PPC | SX6001 | Ppc@123 |
-| Management | SX7001 | Manage@123 |
-
-Change users, permissions and application URLs inside `assets/config.js`.
+Employee users, permissions and application URLs are managed inside `assets/config.js` for this front-end prototype. No employee IDs or passwords are displayed on the portal interface.
 
 ## SAMA department controls
 
