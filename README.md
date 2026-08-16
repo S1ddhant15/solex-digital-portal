@@ -18,9 +18,23 @@ Unified entry point for the Solex MES Portal, SAMA AI Maintenance Assistant and 
 | Maintenance | SX2001 | Maint@123 |
 | Production | SX3001 | Prod@123 |
 | Quality | SX4001 | Quality@123 |
+| Process Engineering | SX4501 | Process@123 |
 | L&D | SX5001 | Learn@123 |
+| PPC | SX6001 | Ppc@123 |
+| Management | SX7001 | Manage@123 |
 
-Change users, permissions and application URLs inside `assets/js/config.js`.
+Change users, permissions and application URLs inside `assets/config.js`.
+
+## SAMA department controls
+
+| Department | Machine / production view | Process parameters | Request change | Approve change |
+| --- | ---: | ---: | ---: | ---: |
+| Production | Yes | No | No | No |
+| Quality | Yes | Yes | Yes | No |
+| Maintenance | Yes | Yes | No | No |
+| Process Engineering | Yes | Yes | Yes | Yes, except own request |
+| Management | Yes | Yes | No | No |
+| Operations Excellence Admin | Yes | Yes | Yes | Yes, except own request |
 
 ## Security warning
 
